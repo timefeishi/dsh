@@ -394,6 +394,12 @@ function checkForUpdates(manual) {
   }
   try {
     const updater = getAutoUpdater();
+    // Optional override: point the updater at a custom generic feed (e.g. a
+    // self-hosted server or a local test server). Defaults to the GitHub
+    // provider baked into app-update.yml (timefeishi/dsh).
+    if (process.env.DSH_UPDATE_URL) {
+      updater.setFeedURL({ provider: "generic", url: process.env.DSH_UPDATE_URL });
+    }
     updater.checkForUpdates().catch((err) => {
       appendLog(`checkForUpdates failed: ${err.message}`);
       if (manual) {
