@@ -449,14 +449,22 @@ function createWindow() {
         document.head.appendChild(style);
 
         // Progress card (created once, moved into the content pane on click).
+        // percent === null → text-only (no bar); percent is a number → show bar.
         const progress = document.createElement('div');
         progress.id = 'dsh-update-progress';
         progress.innerHTML = '<div class="text"></div><div class="bar"><div class="fill"></div></div>';
         function showProgress(text, percent, duration) {
           const t = progress.querySelector('.text');
           const f = progress.querySelector('.fill');
+          const bar = progress.querySelector('.bar');
           if (text != null) t.textContent = text;
-          if (percent != null) f.style.width = percent + '%';
+          if (typeof percent === 'number') {
+            f.style.width = percent + '%';
+            bar.style.display = 'block';
+          } else {
+            f.style.width = '0%';
+            bar.style.display = 'none';
+          }
           progress.style.display = 'block';
           clearTimeout(progress._t);
           if (duration) progress._t = setTimeout(() => { progress.style.display = 'none'; }, duration);
@@ -465,7 +473,8 @@ function createWindow() {
         if (window.dshUpdater && window.dshUpdater.onProgress) {
           window.dshUpdater.onProgress((p) => {
             if (!p || p.phase === 'extract') return;
-            showProgress(p.text, p.percent, 0);
+            // Only downloads carry a percent; the check result is text-only.
+            showProgress(p.text, typeof p.percent === 'number' ? p.percent : null, 0);
             if (p.phase === 'download' && p.percent >= 100) {
               setTimeout(() => { progress.style.display = 'none'; }, 1500);
             }
@@ -500,7 +509,9 @@ function createWindow() {
             check.onclick = async () => {
               if (check.disabled) return;
               check.disabled = true; check.textContent = '检查中…';
-              showProgress('正在检查更新…', 0, 0);
+              // Text-only status while checking — no bar until a download
+              // actually starts (progress arrives via onProgress with %).
+              showProgress('正在检查更新…', null, 0);
               try {
                 const res = await window.dshUpdater.check();
                 showProgress(res, null, 4000);
