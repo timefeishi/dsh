@@ -115,7 +115,8 @@ function writeExtractedHash(hash) {
 // Windows 10/11); falls back to a Node-side gunzip+untar if tar is missing.
 // The archive contains a top-level "dsh-runtime/" entry, so extract into
 // userData directly — the prefix lands at userData/dsh-runtime.
-function extractRuntime() {
+// onProgress({phase, percent, text}) is invoked for UI feedback.
+function extractRuntime(onProgress) {
   return new Promise((resolve, reject) => {
     const packed = packedRuntimePaths();
     if (!packed) { reject(new Error("packed runtime not found")); return; }
@@ -131,17 +132,33 @@ function extractRuntime() {
     const useTar = fs.existsSync(tar);
     if (useTar) {
       appendLog(`extracting runtime via tar (${packed.gz})`);
+      if (onProgress) onProgress({ phase: "extract", percent: 0, text: "正在解压运行环境…" });
       const child = spawn(tar, ["-xzf", packed.gz, "-C", userData], { windowsHide: true });
-      child.on("error", (err) => { reject(err); });
+      // tar has no incremental progress; poll the extracted file count and
+      // scale it against the known archive size to drive a progress bar.
+      let polled = 0;
+      const pollTimer = setInterval(() => {
+        const count = countFiles(dest);
+        if (count > polled) {
+          polled = count;
+          const percent = Math.min(95, Math.round((count / 24000) * 100));
+          if (onProgress) onProgress({ phase: "extract", percent, text: `正在解压运行环境…（${count} 个文件）` });
+        }
+      }, 300);
+      child.on("error", (err) => { clearInterval(pollTimer); reject(err); });
       child.on("exit", (code) => {
-        if (code === 0) resolve();
-        else reject(new Error(`tar exit ${code}`));
+        clearInterval(pollTimer);
+        if (code === 0) {
+          if (onProgress) onProgress({ phase: "extract", percent: 100, text: "解压完成" });
+          resolve();
+        } else reject(new Error(`tar exit ${code}`));
       });
       return;
     }
 
     // Fallback: pure-Node extraction (slower, but no external dependency).
     appendLog("tar.exe not found, extracting with Node zlib fallback");
+    if (onProgress) onProgress({ phase: "extract", percent: 0, text: "正在解压运行环境…" });
     const zlib = require("zlib");
     const readStream = fs.createReadStream(packed.gz);
     const gunzip = zlib.createGunzip();
@@ -149,10 +166,12 @@ function extractRuntime() {
     readStream.pipe(gunzip);
     gunzip.on("data", (chunk) => {
       pending = Buffer.concat([pending, chunk]);
+      if (onProgress) onProgress({ phase: "extract", percent: Math.min(50, Math.round((pending.length / 90000000) * 50)), text: "正在解压运行环境…" });
     });
     gunzip.on("end", () => {
       try {
-        untarBuffer(pending, userData);
+        untarBuffer(pending, userData, onProgress);
+        if (onProgress) onProgress({ phase: "extract", percent: 100, text: "解压完成" });
         resolve();
       } catch (err) { reject(err); }
     });
@@ -161,10 +180,25 @@ function extractRuntime() {
   });
 }
 
+function countFiles(dir) {
+  let n = 0;
+  try {
+    const walk = (d) => {
+      for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+        if (e.isDirectory()) walk(path.join(d, e.name));
+        else n++;
+      }
+    };
+    walk(dir);
+  } catch {}
+  return n;
+}
+
 // Minimal POSIX ustar reader for the fallback path.
-function untarBuffer(buf, dest) {
+function untarBuffer(buf, dest, onProgress) {
   const paths = [];
   let off = 0;
+  let written = 0;
   while (off + 512 <= buf.length) {
     const header = buf.slice(off, off + 512);
     const name = header.slice(0, 100).toString("utf8").replace(/\0.*$/, "");
@@ -179,6 +213,10 @@ function untarBuffer(buf, dest) {
       fs.mkdirSync(path.dirname(filePath), { recursive: true });
       fs.writeFileSync(filePath, buf.slice(off + 512, off + 512 + size));
       paths.push(filePath);
+      written += size;
+      if (onProgress && written % 5000000 < size) {
+        onProgress({ phase: "extract", percent: Math.min(95, Math.round(50 + (written / 90000000) * 45)), text: `正在解压运行环境…（${paths.length} 个文件）` });
+      }
     }
     off += 512 + Math.ceil(size / 512) * 512;
   }
@@ -195,7 +233,10 @@ async function ensureRuntime() {
   }
   if (expected) {
     appendLog(`runtime hash mismatch (expected ${expected ? expected.slice(0, 8) : "none"}, have ${current ? current.slice(0, 8) : "none"}) — re-extracting`);
-    await extractRuntime();
+    await extractRuntime((p) => {
+      sendProgress(p);          // renderer toast + splash bar
+      updateSplash(p.percent, p.text);
+    });
     writeExtractedHash(expected);
     appendLog("runtime extracted");
     return true;
@@ -372,9 +413,10 @@ function createWindow() {
     },
   });
 
-  // Inject the floating "检查更新" button into the loaded page (packaged only;
-  // dev has no updater). The button calls window.dshUpdater.check() (preload)
-  // and shows the result in a small toast.
+  // Inject the "检查更新" control into the loaded page (packaged only; dev
+  // has no updater). Tries to dock next to the page's settings entry; falls
+  // back to a fixed bottom-right button. Also shows a live progress card for
+  // runtime extraction / update download via window.dshUpdater.onProgress.
   mainWindow.webContents.on("did-finish-load", () => {
     if (!app.isPackaged) return;
     mainWindow.webContents.executeJavaScript(
@@ -384,20 +426,33 @@ function createWindow() {
         const style = document.createElement('style');
         style.textContent = \`
           #dsh-update-btn {
-            position: fixed; right: 16px; bottom: 60px; z-index: 2147483647;
-            padding: 8px 14px; border: 1px solid rgba(255,255,255,.18);
-            border-radius: 999px; background: rgba(15,17,21,.85);
+            padding: 6px 14px; border: 1px solid rgba(255,255,255,.18);
+            border-radius: 8px; background: rgba(255,255,255,.04);
             color: #e8edf5; font: 13px system-ui; cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,.35); backdrop-filter: blur(4px);
-            transition: background .15s;
+            transition: background .15s; white-space: nowrap;
           }
-          #dsh-update-btn:hover { background: rgba(40,48,68,.95); }
+          #dsh-update-btn:hover { background: rgba(255,255,255,.1); }
           #dsh-update-btn:disabled { opacity: .6; cursor: default; }
-          #dsh-update-toast {
+          #dsh-update-btn.fixed-btn {
+            position: fixed; right: 16px; bottom: 60px; z-index: 2147483647;
+            padding: 8px 14px; border-radius: 999px; background: rgba(15,17,21,.85);
+            box-shadow: 0 2px 10px rgba(0,0,0,.35);
+          }
+          #dsh-update-progress {
             position: fixed; right: 16px; bottom: 108px; z-index: 2147483647;
-            padding: 10px 16px; border-radius: 10px; background: rgba(15,17,21,.92);
-            color: #e8edf5; font: 13px system-ui; border: 1px solid rgba(255,255,255,.15);
-            box-shadow: 0 4px 16px rgba(0,0,0,.4); display: none; max-width: 360px;
+            width: 320px; padding: 12px 14px; border-radius: 10px;
+            background: rgba(15,17,21,.94); color: #e8edf5;
+            font: 13px system-ui; border: 1px solid rgba(255,255,255,.15);
+            box-shadow: 0 4px 16px rgba(0,0,0,.4); display: none;
+          }
+          #dsh-update-progress .bar {
+            height: 5px; margin-top: 8px; background: rgba(255,255,255,.08);
+            border-radius: 3px; overflow: hidden;
+          }
+          #dsh-update-progress .fill {
+            height: 100%; width: 0%; border-radius: 3px;
+            background: linear-gradient(90deg,#4d9fff,#6ee7ff);
+            transition: width .25s;
           }
         \`;
         document.head.appendChild(style);
@@ -409,23 +464,59 @@ function createWindow() {
           btn.disabled = true; btn.textContent = '检查中…';
           try {
             const res = await window.dshUpdater.check();
-            showToast(res);
+            if (res && !res.startsWith('已是最新')) showProgressCard(res, null, 3000);
+            else showProgressCard(res, null, 3000);
           } catch (e) {
-            showToast('检查更新失败：' + (e && e.message ? e.message : e));
+            showProgressCard('检查更新失败：' + (e && e.message ? e.message : e), null, 5000);
           } finally {
             btn.disabled = false; btn.textContent = '检查更新';
           }
         };
-        const toast = document.createElement('div');
-        toast.id = 'dsh-update-toast';
-        function showToast(text) {
-          toast.textContent = text;
-          toast.style.display = 'block';
-          clearTimeout(toast._t);
-          toast._t = setTimeout(() => { toast.style.display = 'none'; }, 6000);
+        const progress = document.createElement('div');
+        progress.id = 'dsh-update-progress';
+        progress.innerHTML = '<div class="text"></div><div class="bar"><div class="fill"></div></div>';
+        function showProgressCard(text, percent, duration) {
+          const t = progress.querySelector('.text');
+          const f = progress.querySelector('.fill');
+          t.textContent = text;
+          f.style.width = (percent == null ? 0 : percent) + '%';
+          progress.style.display = 'block';
+          clearTimeout(progress._t);
+          if (duration) progress._t = setTimeout(() => { progress.style.display = 'none'; }, duration);
+        }
+        // Live progress from main (runtime extract / update download).
+        if (window.dshUpdater && window.dshUpdater.onProgress) {
+          window.dshUpdater.onProgress((p) => {
+            if (!p) return;
+            showProgressCard(p.text || '', p.percent, p.phase === 'download' ? 0 : 2000);
+            if (p.phase === 'download' && p.percent >= 100) {
+              setTimeout(() => { progress.style.display = 'none'; }, 1500);
+            }
+          });
         }
         document.body.appendChild(btn);
-        document.body.appendChild(toast);
+        document.body.appendChild(progress);
+
+        // Try to dock next to a settings entry; otherwise keep fixed button.
+        setTimeout(() => {
+          const candidates = [
+            '[aria-label*="设置"]', '[aria-label*="Settings"]',
+            '[data-testid*="setting"]', 'header button:last-child',
+            'nav button:last-child', '[class*="setting" i]', '[class*="Setting" i]'
+          ];
+          let host = null;
+          for (const sel of candidates) {
+            const el = document.querySelector(sel);
+            if (el && el.offsetParent !== null) { host = el; break; }
+          }
+          if (host && host.parentElement) {
+            host.parentElement.insertBefore(btn, host.nextSibling);
+            btn.classList.remove('fixed-btn');
+            btn.style.marginLeft = '8px';
+          } else {
+            btn.classList.add('fixed-btn');
+          }
+        }, 800);
       })()`
     ).catch((err) => appendLog(`update button injection failed: ${err.message}`));
   });
@@ -467,10 +558,35 @@ function showSplash(win) {
     "data:text/html;charset=utf-8," +
       encodeURIComponent(
         `<!doctype html><html><body style="margin:0;background:#0f1115;color:#8b9cb8;font-family:system-ui;display:flex;align-items:center;justify-content:center;height:100vh">
-         <div style="text-align:center"><div style="font-size:28px;font-weight:600;color:#e8edf5;margin-bottom:10px">DeepSeek Harness</div>
-         <div>正在启动本地服务，请稍候…</div></div></body></html>`
+         <div style="text-align:center;width:340px">
+           <div style="font-size:28px;font-weight:600;color:#e8edf5;margin-bottom:10px">DeepSeek Harness</div>
+           <div id="dsh-splash-text" style="margin-bottom:14px">正在启动本地服务，请稍候…</div>
+           <div style="height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden">
+             <div id="dsh-splash-bar" style="width:0%;height:100%;background:linear-gradient(90deg,#4d9fff,#6ee7ff);border-radius:3px;transition:width .3s"></div>
+           </div>
+         </div>
+         <script>window.__setSplashProgress = function(p, t) { var b = document.getElementById('dsh-splash-bar'); if (b) b.style.width = p + '%'; var x = document.getElementById('dsh-splash-text'); if (x && t) x.textContent = t; };</script>
+         </body></html>`
       )
   );
+}
+
+// Push splash progress into the loading page (no-op when not ready).
+function updateSplash(percent, text) {
+  if (!mainWindow || mainWindow.isDestroyed()) return;
+  mainWindow.webContents
+    .executeJavaScript(`window.__setSplashProgress(${percent}, ${JSON.stringify(text || "")})`)
+    .catch(() => {});
+}
+
+// Broadcast progress to the renderer (toast/bar) and the splash.
+function sendProgress(payload) {
+  if (mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.webContents.send("dsh:progress", payload);
+  }
+  if (payload.phase === "extract") {
+    updateSplash(payload.percent, payload.text);
+  }
 }
 
 function isAutoStartEnabled() {
@@ -545,6 +661,18 @@ function setupAutoUpdater() {
         .then(({ response }) => {
           if (response === 0) updater.downloadUpdate();
         });
+    });
+    // Live download progress → renderer (toast bar) so the user sees the
+    // update downloading instead of a silent wait.
+    updater.on("download-progress", (p) => {
+      const percent = Math.round(p.percent || 0);
+      const mb = (p.transferred / 1048576).toFixed(1);
+      const total = (p.total / 1048576).toFixed(1);
+      sendProgress({
+        phase: "download",
+        percent,
+        text: `正在下载更新… ${percent}%（${mb} / ${total} MB）`,
+      });
     });
     updater.on("update-downloaded", (info) => {
       appendLog(`update downloaded: ${info.version}`);
@@ -656,7 +784,7 @@ if (!gotLock) {
     const win = createWindow();
     showSplash(win);
     try {
-      await ensureRuntime();
+      await ensureRuntime((p) => updateSplash(p.percent, p.text));
     } catch (err) {
       appendLog(`ensureRuntime failed: ${err.message}`);
       dialog.showErrorBox(
