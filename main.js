@@ -495,11 +495,26 @@ function createWindow() {
             '<path d="M8 2v8m0 0l-3-3m3 3l3-3M3 12.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
             '<span>更新</span>';
           cell.onclick = () => {
+            // Highlight our nav cell (React manages native cells' active
+            // state, but our cell is outside React — toggle it manually).
             document.querySelectorAll('.VOzbGW_navCell').forEach((c) => c.classList.remove('VOzbGW_active'));
             cell.classList.add('VOzbGW_active');
+            // The content pane is React-managed; we must NOT wipe it or React
+            // stops re-rendering tabs. Instead show an overlay panel on top.
             const content = document.querySelector('.VOzbGW_content');
             if (!content) return;
-            content.innerHTML = '';
+            // Remove any previous overlay (in case it lingers).
+            const old = document.getElementById('dsh-update-overlay');
+            if (old) old.remove();
+
+            const overlay = document.createElement('div');
+            overlay.id = 'dsh-update-overlay';
+            overlay.style.cssText =
+              'position:absolute;inset:0;background:#fff;padding:20px 24px;overflow:auto;z-index:50;';
+            // The settings panel may not be positioned; force it so inset works.
+            const panel = content.closest('.VOzbGW_panel') || content.parentElement;
+            if (panel) panel.style.position = 'relative';
+
             const h = document.createElement('div');
             h.style.cssText = 'font:600 14px/22px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; color: rgb(15,17,21); margin-bottom: 16px;';
             h.textContent = '更新';
@@ -524,11 +539,21 @@ function createWindow() {
             const desc = document.createElement('div');
             desc.id = 'dsh-update-desc';
             desc.textContent = '检查 GitHub Releases 是否有新版本，下载完成后重启应用即可完成更新。';
-            content.appendChild(h);
-            content.appendChild(check);
-            content.appendChild(desc);
-            content.appendChild(progress);
+            overlay.appendChild(h);
+            overlay.appendChild(check);
+            overlay.appendChild(desc);
+            overlay.appendChild(progress);
             progress.style.display = 'none';
+            content.appendChild(overlay);
+
+            // When React re-renders the content pane (user clicks another
+            // tab), React's render wipes our overlay automatically — but to
+            // be safe, also remove it if React changes the pane's children.
+            window.__dshOverlayWatcher = window.__dshOverlayWatcher || new MutationObserver(() => {
+              const ov = document.getElementById('dsh-update-overlay');
+              if (ov && !document.querySelector('.VOzbGW_content')?.contains(ov)) ov.remove();
+            });
+            window.__dshOverlayWatcher.observe(content, { childList: true });
           };
           return cell;
         }
@@ -540,6 +565,17 @@ function createWindow() {
           if (!list) return;
           if (list.querySelector('#dsh-update-nav')) return;
           list.appendChild(buildNavCell());
+          // One-time delegation: clicking a NATIVE nav cell (通用设置/模型/…)
+          // removes our overlay so React's tab switch shows its own content.
+          if (!window.__dshNavDelegated) {
+            window.__dshNavDelegated = true;
+            document.addEventListener('click', (e) => {
+              const cell = e.target.closest('.VOzbGW_navCell');
+              if (!cell || cell.id === 'dsh-update-nav') return;
+              const ov = document.getElementById('dsh-update-overlay');
+              if (ov) ov.remove();
+            });
+          }
         }
         const observer = new MutationObserver(ensureInjected);
         observer.observe(document.body, { childList: true, subtree: true });
