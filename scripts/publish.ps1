@@ -1,14 +1,17 @@
 # Build and publish a release. Keeps disk usage bounded:
 # - always writes to the SAME output directory (release-upd)
 # - removes the previous win-unpacked and installer from that directory first
+# - detects and (with confirmation) removes stale historical release dirs
 # - optionally uploads to GitHub Releases (needs $env:GH_TOKEN)
 #
 # Usage:
 #   powershell -ExecutionPolicy Bypass -File scripts\publish.ps1            # build only
 #   $env:GH_TOKEN = "..." ; powershell -ExecutionPolicy Bypass -File scripts\publish.ps1 -Publish
+#   powershell -ExecutionPolicy Bypass -File scripts\publish.ps1 -CleanAll  # skip build, only clean stale dirs
 
 param(
-  [switch]$Publish
+  [switch]$Publish,
+  [switch]$CleanAll
 )
 
 $ErrorActionPreference = "Stop"
@@ -17,6 +20,47 @@ $out  = Join-Path $root "release-upd"
 
 $env:ELECTRON_MIRROR = "https://npmmirror.com/mirrors/electron/"
 $env:ELECTRON_BUILDER_BINARIES_MIRROR = "https://npmmirror.com/mirrors/electron-builder-binaries/"
+
+# ── stale release dir cleanup ─────────────────────────────────────────────
+# Historical output dirs (release, release-*, release-upd-*) can pile up
+# ~750MB each. Keep only the canonical $out; offer to delete the rest.
+function Get-StaleReleaseDirs {
+  Get-ChildItem $root -Directory -ErrorAction SilentlyContinue |
+    Where-Object { $_.Name -match '^release' -and $_.FullName -ne $out }
+}
+
+function Remove-StaleReleaseDirs {
+  $stale = @(Get-StaleReleaseDirs)
+  if ($stale.Count -eq 0) {
+    Write-Host "No stale release directories found." -ForegroundColor Green
+    return
+  }
+  $totalMB = [math]::Round((($stale | ForEach-Object {
+    (Get-ChildItem $_.FullName -Recurse -File -ErrorAction SilentlyContinue | Measure-Object Length -Sum).Sum
+  } | Measure-Object -Sum).Sum) / 1MB, 0)
+
+  Write-Host ""
+  Write-Host "Found $($stale.Count) stale release directorie(s), ~$totalMB MB:" -ForegroundColor Yellow
+  $stale | ForEach-Object { Write-Host "  - $($_.FullName)" -ForegroundColor Yellow }
+
+  if ($CleanAll) { $answer = "y" }
+  else {
+    $answer = Read-Host "Delete them? [y/N]"
+  }
+  if ($answer -match '^[yY]') {
+    foreach ($d in $stale) { Remove-Item $d.FullName -Recurse -Force; Write-Host "deleted $($d.FullName)" -ForegroundColor DarkGray }
+  } else {
+    Write-Host "Skipped. (Run with -CleanAll to delete without prompting)" -ForegroundColor DarkGray
+  }
+}
+
+if ($CleanAll) {
+  Remove-StaleReleaseDirs
+  Write-Host "Done." -ForegroundColor Green
+  exit 0
+}
+
+Remove-StaleReleaseDirs
 
 Write-Host "==> Preparing bundled runtime (resources\dsh-runtime)" -ForegroundColor Cyan
 & powershell -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "prepare-runtime.ps1")
