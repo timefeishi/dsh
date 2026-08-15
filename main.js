@@ -413,110 +413,117 @@ function createWindow() {
     },
   });
 
-  // Inject the "检查更新" control into the loaded page (packaged only; dev
-  // has no updater). Tries to dock next to the page's settings entry; falls
-  // back to a fixed bottom-right button. Also shows a live progress card for
-  // runtime extraction / update download via window.dshUpdater.onProgress.
+  // Inject an "更新" entry into the harness settings panel (packaged only).
+  // The settings panel has a left nav list (VOzbGW_navList > .VOzbGW_navCell)
+  // and a right content pane (VOzbGW_content). We add a "更新" nav cell; when
+  // selected, the content pane shows a "检查更新" button plus a progress card
+  // fed by window.dshUpdater.onProgress (runtime extract / update download).
+  // Nothing is shown on the first screen or before the panel is opened.
   mainWindow.webContents.on("did-finish-load", () => {
     if (!app.isPackaged) return;
     mainWindow.webContents.executeJavaScript(
       `(() => {
-        if (window.__dshUpdateBtnInstalled) return;
-        window.__dshUpdateBtnInstalled = true;
+        if (window.__dshUpdateInjected) return;
+        window.__dshUpdateInjected = true;
+
         const style = document.createElement('style');
         style.textContent = \`
-          #dsh-update-btn {
-            padding: 6px 14px; border: 1px solid rgba(255,255,255,.18);
-            border-radius: 8px; background: rgba(255,255,255,.04);
-            color: #e8edf5; font: 13px system-ui; cursor: pointer;
-            transition: background .15s; white-space: nowrap;
+          #dsh-update-nav {
+            display: flex; align-items: center; gap: 8px; width: 100%;
+            padding: 8px 10px; border: 0; border-radius: 8px; background: transparent;
+            color: inherit; font: inherit; cursor: pointer; text-align: left;
           }
-          #dsh-update-btn:hover { background: rgba(255,255,255,.1); }
-          #dsh-update-btn:disabled { opacity: .6; cursor: default; }
-          #dsh-update-btn.fixed-btn {
-            position: fixed; right: 16px; bottom: 60px; z-index: 2147483647;
-            padding: 8px 14px; border-radius: 999px; background: rgba(15,17,21,.85);
-            box-shadow: 0 2px 10px rgba(0,0,0,.35);
-          }
-          #dsh-update-progress {
-            position: fixed; right: 16px; bottom: 108px; z-index: 2147483647;
-            width: 320px; padding: 12px 14px; border-radius: 10px;
-            background: rgba(15,17,21,.94); color: #e8edf5;
-            font: 13px system-ui; border: 1px solid rgba(255,255,255,.15);
-            box-shadow: 0 4px 16px rgba(0,0,0,.4); display: none;
-          }
-          #dsh-update-progress .bar {
-            height: 5px; margin-top: 8px; background: rgba(255,255,255,.08);
-            border-radius: 3px; overflow: hidden;
-          }
-          #dsh-update-progress .fill {
-            height: 100%; width: 0%; border-radius: 3px;
-            background: linear-gradient(90deg,#4d9fff,#6ee7ff);
-            transition: width .25s;
-          }
+          #dsh-update-nav:hover { background: rgba(255,255,255,.06); }
+          #dsh-update-nav.active { background: rgba(255,255,255,.1); }
+          #dsh-update-check { padding: 8px 18px; border-radius: 8px; border: 0;
+            background: linear-gradient(90deg,#4d9fff,#6ee7ff); color: #0f1115;
+            font: 600 14px system-ui; cursor: pointer; }
+          #dsh-update-check:disabled { opacity: .6; cursor: default; }
+          #dsh-update-progress { margin-top: 14px; display: none; max-width: 420px; }
+          #dsh-update-progress .text { font: 13px system-ui; color: inherit; margin-bottom: 6px; }
+          #dsh-update-progress .bar { height: 5px; background: rgba(255,255,255,.12); border-radius: 3px; overflow: hidden; }
+          #dsh-update-progress .fill { height: 100%; width: 0%; background: linear-gradient(90deg,#4d9fff,#6ee7ff); border-radius: 3px; transition: width .25s; }
         \`;
         document.head.appendChild(style);
-        const btn = document.createElement('button');
-        btn.id = 'dsh-update-btn';
-        btn.textContent = '检查更新';
-        btn.onclick = async () => {
-          if (btn.disabled) return;
-          btn.disabled = true; btn.textContent = '检查中…';
-          try {
-            const res = await window.dshUpdater.check();
-            if (res && !res.startsWith('已是最新')) showProgressCard(res, null, 3000);
-            else showProgressCard(res, null, 3000);
-          } catch (e) {
-            showProgressCard('检查更新失败：' + (e && e.message ? e.message : e), null, 5000);
-          } finally {
-            btn.disabled = false; btn.textContent = '检查更新';
-          }
-        };
+
+        // Progress card elements (created once, moved into content pane).
         const progress = document.createElement('div');
         progress.id = 'dsh-update-progress';
         progress.innerHTML = '<div class="text"></div><div class="bar"><div class="fill"></div></div>';
-        function showProgressCard(text, percent, duration) {
+        function showProgress(text, percent, duration) {
           const t = progress.querySelector('.text');
           const f = progress.querySelector('.fill');
-          t.textContent = text;
-          f.style.width = (percent == null ? 0 : percent) + '%';
+          if (text != null) t.textContent = text;
+          if (percent != null) f.style.width = percent + '%';
           progress.style.display = 'block';
           clearTimeout(progress._t);
           if (duration) progress._t = setTimeout(() => { progress.style.display = 'none'; }, duration);
         }
-        // Live progress from main (runtime extract / update download).
+
+        // Live progress from main (runtime extract happens before this page
+        // loads, so only update-download progress is visible here; extraction
+        // progress shows on the splash).
         if (window.dshUpdater && window.dshUpdater.onProgress) {
           window.dshUpdater.onProgress((p) => {
-            if (!p) return;
-            showProgressCard(p.text || '', p.percent, p.phase === 'download' ? 0 : 2000);
+            if (!p || p.phase === 'extract') return;
+            showProgress(p.text, p.percent, 0);
             if (p.phase === 'download' && p.percent >= 100) {
               setTimeout(() => { progress.style.display = 'none'; }, 1500);
             }
           });
         }
-        document.body.appendChild(btn);
-        document.body.appendChild(progress);
 
-        // Try to dock next to a settings entry; otherwise keep fixed button.
-        setTimeout(() => {
-          const candidates = [
-            '[aria-label*="设置"]', '[aria-label*="Settings"]',
-            '[data-testid*="setting"]', 'header button:last-child',
-            'nav button:last-child', '[class*="setting" i]', '[class*="Setting" i]'
-          ];
-          let host = null;
-          for (const sel of candidates) {
-            const el = document.querySelector(sel);
-            if (el && el.offsetParent !== null) { host = el; break; }
+        const navCell = document.createElement('button');
+        navCell.id = 'dsh-update-nav';
+        navCell.textContent = '更新';
+        navCell.onclick = () => {
+          document.querySelectorAll('.VOzbGW_navCell').forEach((c) => c.classList.remove('VOzbGW_active'));
+          navCell.classList.add('active');
+          const content = document.querySelector('.VOzbGW_content');
+          if (!content) return;
+          content.innerHTML = '';
+          const h = document.createElement('div');
+          h.style.cssText = 'font-size:15px;font-weight:600;margin-bottom:16px;';
+          h.textContent = '更新';
+          const check = document.createElement('button');
+          check.id = 'dsh-update-check';
+          check.textContent = '检查更新';
+          check.onclick = async () => {
+            if (check.disabled) return;
+            check.disabled = true; check.textContent = '检查中…';
+            showProgress('正在检查更新…', 0, 0);
+            try {
+              const res = await window.dshUpdater.check();
+              showProgress(res, null, 4000);
+            } catch (e) {
+              showProgress('检查更新失败：' + (e && e.message ? e.message : e), null, 6000);
+            } finally {
+              check.disabled = false; check.textContent = '检查更新';
+            }
+          };
+          const desc = document.createElement('div');
+          desc.style.cssText = 'font:13px system-ui;opacity:.7;margin:8px 0 12px;';
+          desc.textContent = '检查 GitHub Releases 是否有新版本，下载完成后重启应用即可完成更新。';
+          content.appendChild(h);
+          content.appendChild(check);
+          content.appendChild(desc);
+          content.appendChild(progress);
+          progress.style.display = 'none';
+        };
+
+        // Add the nav cell after "Agent 预设" (last cell) when settings opens.
+        // The panel may be created lazily, so watch for it.
+        let tries = 0;
+        const tryInject = () => {
+          const list = document.querySelector('.VOzbGW_navList');
+          if (list && !list.contains(navCell)) {
+            list.appendChild(navCell);
+            return true;
           }
-          if (host && host.parentElement) {
-            host.parentElement.insertBefore(btn, host.nextSibling);
-            btn.classList.remove('fixed-btn');
-            btn.style.marginLeft = '8px';
-          } else {
-            btn.classList.add('fixed-btn');
-          }
-        }, 800);
+          if (tries++ < 40) setTimeout(tryInject, 500);
+          return false;
+        };
+        tryInject();
       })()`
     ).catch((err) => appendLog(`update button injection failed: ${err.message}`));
   });
@@ -561,11 +568,11 @@ function showSplash(win) {
          <div style="text-align:center;width:340px">
            <div style="font-size:28px;font-weight:600;color:#e8edf5;margin-bottom:10px">DeepSeek Harness</div>
            <div id="dsh-splash-text" style="margin-bottom:14px">正在启动本地服务，请稍候…</div>
-           <div style="height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden">
+           <div id="dsh-splash-bar-wrap" style="display:none;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden">
              <div id="dsh-splash-bar" style="width:0%;height:100%;background:linear-gradient(90deg,#4d9fff,#6ee7ff);border-radius:3px;transition:width .3s"></div>
            </div>
          </div>
-         <script>window.__setSplashProgress = function(p, t) { var b = document.getElementById('dsh-splash-bar'); if (b) b.style.width = p + '%'; var x = document.getElementById('dsh-splash-text'); if (x && t) x.textContent = t; };</script>
+         <script>window.__setSplashProgress = function(p, t) { var w = document.getElementById('dsh-splash-bar-wrap'); if (w) w.style.display = (p > 0 ? 'block' : 'none'); var b = document.getElementById('dsh-splash-bar'); if (b) b.style.width = p + '%'; var x = document.getElementById('dsh-splash-text'); if (x && t) x.textContent = t; };</script>
          </body></html>`
       )
   );
