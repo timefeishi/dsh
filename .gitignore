@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+
+# build output
+release/
+release-upd/
+dist/
+
+# bundled runtime (built locally from the npx cache before packaging;
+# ~330MB of vendored node + dsh dependency tree — never commit it)
+resources/dsh-runtime/
+
+# logs
+logs/
+*.log
+
+# electron-builder cache / debug
+builder-debug.yml
+*.blockmap
+
+# OS
+Thumbs.db
+.DS_Store
