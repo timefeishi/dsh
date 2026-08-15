@@ -2,10 +2,17 @@
 #   git sanity (clean + in sync with origin) → bump version → build & publish
 #
 # Usage:
-#   powershell -ExecutionPolicy Bypass -File scripts\release.ps1
+#   powershell -ExecutionPolicy Bypass -File scripts\release.ps1            # interactive version prompt
+#   powershell -ExecutionPolicy Bypass -File scripts\release.ps1 -Version 1.0.1
+#   powershell -ExecutionPolicy Bypass -File scripts\release.ps1 -Version 1.0.1 -SkipGitCheck
 #
 # Env:
 #   GH_TOKEN  required to upload to GitHub Releases.
+
+param(
+  [string]$Version,
+  [switch]$SkipGitCheck
+)
 
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot   # dsh-desktop/
@@ -21,6 +28,8 @@ Write-Host "=============================================" -ForegroundColor Cyan
 # ── 1. git sanity ─────────────────────────────────────────────────────────
 Write-Host ""
 Write-Host "[1/4] Checking git state..." -ForegroundColor Yellow
+
+if (-not $SkipGitCheck) {
 
 if (-not (Test-Path (Join-Path $root ".git"))) { Fail "not a git repository: $root" }
 
@@ -51,6 +60,10 @@ if ($local -ne $remote) {
 }
 Write-Host "  OK: clean and in sync ($($local.Substring(0,7)))" -ForegroundColor Green
 
+} else {
+  Write-Host "  SKIPPED (SkipGitCheck)" -ForegroundColor DarkGray
+}
+
 # ── 2. version bump ───────────────────────────────────────────────────────
 Write-Host ""
 Write-Host "[2/4] Version bump..." -ForegroundColor Yellow
@@ -63,20 +76,31 @@ Write-Host "  current version: $current" -ForegroundColor DarkGray
 # suggest next patch
 $parts = $current.Split(".")
 $suggested = if ($parts.Count -ge 3) { "$($parts[0]).$($parts[1]).$([int]$parts[2] + 1)" } else { "$current.1" }
-$input = Read-Host "  new version (Enter for $suggested)"
-$newVersion = if ([string]::IsNullOrWhiteSpace($input)) { $suggested } else { $input.Trim() }
+if ($Version) {
+  $newVersion = $Version.Trim()
+} else {
+  $input = Read-Host "  new version (Enter for $suggested)"
+  $newVersion = if ([string]::IsNullOrWhiteSpace($input)) { $suggested } else { $input.Trim() }
+}
 if ($newVersion -notmatch '^\d+\.\d+\.\d+$') { Fail "invalid version format: $newVersion (expect x.y.z)" }
 
 $pkg.version = $newVersion
-$pkg | ConvertTo-Json -Depth 20 | Set-Content $pkgPath -Encoding UTF8
+# Write without BOM: Set-Content -Encoding UTF8 (PS5) adds a BOM that breaks
+# electron-builder's JSON parser.
+$pkgJson = $pkg | ConvertTo-Json -Depth 20
+[System.IO.File]::WriteAllText($pkgPath, $pkgJson, (New-Object System.Text.UTF8Encoding($false)))
 
-# commit the version bump
-& $git -C $root add package.json 2>&1 | Out-Null
-& $git -C $root -c user.name="timefeishi" -c user.email="timefeishi@users.noreply.github.com" commit -m "release v$newVersion" 2>&1 | ForEach-Object { Write-Host "  $_" -ForegroundColor DarkGray }
-if ($LASTEXITCODE -ne 0) { Fail "failed to commit version bump" }
-& $git -C $root push origin master 2>&1 | ForEach-Object { Write-Host "  $_" -ForegroundColor DarkGray }
-if ($LASTEXITCODE -ne 0) { Fail "git push failed (network?)" }
-Write-Host "  version bumped to $newVersion and pushed" -ForegroundColor Green
+# commit the version bump (skipped with -SkipGitCheck: only touch package.json)
+if ($SkipGitCheck) {
+  Write-Host "  version file bumped to $newVersion (git steps skipped)" -ForegroundColor Green
+} else {
+  & $git -C $root add package.json 2>&1 | Out-Null
+  & $git -C $root -c user.name="timefeishi" -c user.email="timefeishi@users.noreply.github.com" commit -m "release v$newVersion" 2>&1 | ForEach-Object { Write-Host "  $_" -ForegroundColor DarkGray }
+  if ($LASTEXITCODE -ne 0) { Fail "failed to commit version bump" }
+  & $git -C $root push origin master 2>&1 | ForEach-Object { Write-Host "  $_" -ForegroundColor DarkGray }
+  if ($LASTEXITCODE -ne 0) { Fail "git push failed (network?)" }
+  Write-Host "  version bumped to $newVersion and pushed" -ForegroundColor Green
+}
 
 # ── 3. build & publish ────────────────────────────────────────────────────
 Write-Host ""
