@@ -1,13 +1,14 @@
 # dependencies
 node_modules/
 
-# build output
+# build output (every release build lands here; keep only the latest)
 release/
 release-upd/
+release-upd-*/
 dist/
 
-# bundled runtime (built locally from the npx cache before packaging;
-# ~330MB of vendored node + dsh dependency tree — never commit it)
+# bundled runtime (vendored node + dsh dependency tree, ~335MB — regenerated
+# from the npx cache by scripts/prepare-runtime.ps1 before packaging)
 resources/dsh-runtime/
 
 # logs
