@@ -414,11 +414,13 @@ function createWindow() {
   });
 
   // Inject an "更新" entry into the harness settings panel (packaged only).
-  // The settings panel has a left nav list (VOzbGW_navList > .VOzbGW_navCell)
-  // and a right content pane (VOzbGW_content). We add a "更新" nav cell; when
-  // selected, the content pane shows a "检查更新" button plus a progress card
-  // fed by window.dshUpdater.onProgress (runtime extract / update download).
-  // Nothing is shown on the first screen or before the panel is opened.
+  // The settings panel has a left nav list (.VOzbGW_navList > .VOzbGW_navCell)
+  // and a right content pane (.VOzbGW_content). We add a "更新" nav cell that
+  // reuses the native cell class (so it matches the page's styling exactly);
+  // selecting it shows a "检查更新" button + progress fed by
+  // window.dshUpdater.onProgress. The panel is created/destroyed by React on
+  // open/close, so we use a MutationObserver to re-inject whenever it appears.
+  // Nothing shows on the first screen or before the panel is opened.
   mainWindow.webContents.on("did-finish-load", () => {
     if (!app.isPackaged) return;
     mainWindow.webContents.executeJavaScript(
@@ -428,25 +430,25 @@ function createWindow() {
 
         const style = document.createElement('style');
         style.textContent = \`
-          #dsh-update-nav {
-            display: flex; align-items: center; gap: 8px; width: 100%;
-            padding: 8px 10px; border: 0; border-radius: 8px; background: transparent;
-            color: inherit; font: inherit; cursor: pointer; text-align: left;
+          #dsh-update-nav { width: 100%; }
+          #dsh-update-nav .VOzbGW_navIcon { flex: 0 0 auto; }
+          #dsh-update-check {
+            padding: 8px 18px; border-radius: 10px; border: 0; cursor: pointer;
+            background: rgb(235,238,242); color: rgb(15,17,21);
+            font: 600 14px/22px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            transition: background .15s;
           }
-          #dsh-update-nav:hover { background: rgba(255,255,255,.06); }
-          #dsh-update-nav.active { background: rgba(255,255,255,.1); }
-          #dsh-update-check { padding: 8px 18px; border-radius: 8px; border: 0;
-            background: linear-gradient(90deg,#4d9fff,#6ee7ff); color: #0f1115;
-            font: 600 14px system-ui; cursor: pointer; }
+          #dsh-update-check:hover { background: rgb(221,225,231); }
           #dsh-update-check:disabled { opacity: .6; cursor: default; }
           #dsh-update-progress { margin-top: 14px; display: none; max-width: 420px; }
-          #dsh-update-progress .text { font: 13px system-ui; color: inherit; margin-bottom: 6px; }
-          #dsh-update-progress .bar { height: 5px; background: rgba(255,255,255,.12); border-radius: 3px; overflow: hidden; }
-          #dsh-update-progress .fill { height: 100%; width: 0%; background: linear-gradient(90deg,#4d9fff,#6ee7ff); border-radius: 3px; transition: width .25s; }
+          #dsh-update-progress .text { font: 13px/20px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; color: rgb(15,17,21); margin-bottom: 6px; }
+          #dsh-update-progress .bar { height: 5px; background: rgba(15,17,21,.12); border-radius: 3px; overflow: hidden; }
+          #dsh-update-progress .fill { height: 100%; width: 0%; background: rgb(15,17,21); border-radius: 3px; transition: width .25s; }
+          #dsh-update-desc { font: 13px/20px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; color: rgba(15,17,21,.65); margin: 8px 0 12px; }
         \`;
         document.head.appendChild(style);
 
-        // Progress card elements (created once, moved into content pane).
+        // Progress card (created once, moved into the content pane on click).
         const progress = document.createElement('div');
         progress.id = 'dsh-update-progress';
         progress.innerHTML = '<div class="text"></div><div class="bar"><div class="fill"></div></div>';
@@ -460,9 +462,6 @@ function createWindow() {
           if (duration) progress._t = setTimeout(() => { progress.style.display = 'none'; }, duration);
         }
 
-        // Live progress from main (runtime extract happens before this page
-        // loads, so only update-download progress is visible here; extraction
-        // progress shows on the splash).
         if (window.dshUpdater && window.dshUpdater.onProgress) {
           window.dshUpdater.onProgress((p) => {
             if (!p || p.phase === 'extract') return;
@@ -473,57 +472,67 @@ function createWindow() {
           });
         }
 
-        const navCell = document.createElement('button');
-        navCell.id = 'dsh-update-nav';
-        navCell.textContent = '更新';
-        navCell.onclick = () => {
-          document.querySelectorAll('.VOzbGW_navCell').forEach((c) => c.classList.remove('VOzbGW_active'));
-          navCell.classList.add('active');
-          const content = document.querySelector('.VOzbGW_content');
-          if (!content) return;
-          content.innerHTML = '';
-          const h = document.createElement('div');
-          h.style.cssText = 'font-size:15px;font-weight:600;margin-bottom:16px;';
-          h.textContent = '更新';
-          const check = document.createElement('button');
-          check.id = 'dsh-update-check';
-          check.textContent = '检查更新';
-          check.onclick = async () => {
-            if (check.disabled) return;
-            check.disabled = true; check.textContent = '检查中…';
-            showProgress('正在检查更新…', 0, 0);
-            try {
-              const res = await window.dshUpdater.check();
-              showProgress(res, null, 4000);
-            } catch (e) {
-              showProgress('检查更新失败：' + (e && e.message ? e.message : e), null, 6000);
-            } finally {
-              check.disabled = false; check.textContent = '检查更新';
-            }
+        // Build the nav cell once; cloned on each re-injection (the panel's
+        // React tree is recreated on open, so the element must be too).
+        function buildNavCell() {
+          const cell = document.createElement('button');
+          cell.type = 'button';
+          cell.className = 'VOzbGW_navCell';
+          cell.id = 'dsh-update-nav';
+          cell.style.width = '100%';
+          // Minimal inline icon (download arrow) matching the native 16x16.
+          cell.innerHTML =
+            '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="VOzbGW_navIcon" style="flex:0 0 auto">' +
+            '<path d="M8 2v8m0 0l-3-3m3 3l3-3M3 12.5h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+            '<span>更新</span>';
+          cell.onclick = () => {
+            document.querySelectorAll('.VOzbGW_navCell').forEach((c) => c.classList.remove('VOzbGW_active'));
+            cell.classList.add('VOzbGW_active');
+            const content = document.querySelector('.VOzbGW_content');
+            if (!content) return;
+            content.innerHTML = '';
+            const h = document.createElement('div');
+            h.style.cssText = 'font:600 14px/22px -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; color: rgb(15,17,21); margin-bottom: 16px;';
+            h.textContent = '更新';
+            const check = document.createElement('button');
+            check.id = 'dsh-update-check';
+            check.textContent = '检查更新';
+            check.onclick = async () => {
+              if (check.disabled) return;
+              check.disabled = true; check.textContent = '检查中…';
+              showProgress('正在检查更新…', 0, 0);
+              try {
+                const res = await window.dshUpdater.check();
+                showProgress(res, null, 4000);
+              } catch (e) {
+                showProgress('检查更新失败：' + (e && e.message ? e.message : e), null, 6000);
+              } finally {
+                check.disabled = false; check.textContent = '检查更新';
+              }
+            };
+            const desc = document.createElement('div');
+            desc.id = 'dsh-update-desc';
+            desc.textContent = '检查 GitHub Releases 是否有新版本，下载完成后重启应用即可完成更新。';
+            content.appendChild(h);
+            content.appendChild(check);
+            content.appendChild(desc);
+            content.appendChild(progress);
+            progress.style.display = 'none';
           };
-          const desc = document.createElement('div');
-          desc.style.cssText = 'font:13px system-ui;opacity:.7;margin:8px 0 12px;';
-          desc.textContent = '检查 GitHub Releases 是否有新版本，下载完成后重启应用即可完成更新。';
-          content.appendChild(h);
-          content.appendChild(check);
-          content.appendChild(desc);
-          content.appendChild(progress);
-          progress.style.display = 'none';
-        };
+          return cell;
+        }
 
-        // Add the nav cell after "Agent 预设" (last cell) when settings opens.
-        // The panel may be created lazily, so watch for it.
-        let tries = 0;
-        const tryInject = () => {
+        // Re-inject whenever the nav list exists and lacks our cell (the
+        // panel is mounted/unmounted by React on every open/close).
+        function ensureInjected() {
           const list = document.querySelector('.VOzbGW_navList');
-          if (list && !list.contains(navCell)) {
-            list.appendChild(navCell);
-            return true;
-          }
-          if (tries++ < 40) setTimeout(tryInject, 500);
-          return false;
-        };
-        tryInject();
+          if (!list) return;
+          if (list.querySelector('#dsh-update-nav')) return;
+          list.appendChild(buildNavCell());
+        }
+        const observer = new MutationObserver(ensureInjected);
+        observer.observe(document.body, { childList: true, subtree: true });
+        ensureInjected();
       })()`
     ).catch((err) => appendLog(`update button injection failed: ${err.message}`));
   });
