@@ -20,6 +20,27 @@ $git  = "git"
 
 function Fail([string]$msg) { Write-Host "ERROR: $msg" -ForegroundColor Red; exit 1 }
 
+# Run git and return { Code, Output }. Never lets git's stderr (which git uses
+# for normal progress, e.g. "To https://...") become a PowerShell terminating
+# error under $ErrorActionPreference = "Stop"; success is judged only by the
+# process exit code.
+function Invoke-Git {
+  param([Parameter(ValueFromRemainingArguments = $true)][string[]]$GitArgs)
+  $oldEA = $ErrorActionPreference
+  $ErrorActionPreference = "Continue"
+  $out = & $git @GitArgs 2>&1
+  $code = $LASTEXITCODE
+  $ErrorActionPreference = $oldEA
+  return [pscustomobject]@{ Code = $code; Output = $out }
+}
+
+# Show git output lines (ErrorRecords from stderr render as their text).
+function Show-GitOutput($result) {
+  foreach ($line in $result.Output) {
+    Write-Host "  $line" -ForegroundColor DarkGray
+  }
+}
+
 Write-Host ""
 Write-Host "=============================================" -ForegroundColor Cyan
 Write-Host "  DeepSeek Harness Release" -ForegroundColor Cyan
@@ -31,34 +52,35 @@ Write-Host "[1/4] Checking git state..." -ForegroundColor Yellow
 
 if (-not $SkipGitCheck) {
 
-if (-not (Test-Path (Join-Path $root ".git"))) { Fail "not a git repository: $root" }
+  if (-not (Test-Path (Join-Path $root ".git"))) { Fail "not a git repository: $root" }
 
-# must be on master
-$branch = (& $git -C $root rev-parse --abbrev-ref HEAD 2>$null).Trim()
-if ($branch -ne "master") { Fail "current branch is '$branch', expected 'master'" }
+  # must be on master
+  $branch = (Invoke-Git -C $root rev-parse --abbrev-ref HEAD).Output[-1].ToString().Trim()
+  if ($branch -ne "master") { Fail "current branch is '$branch', expected 'master'" }
 
-# fetch latest remote state
-Write-Host "  fetching origin..." -ForegroundColor DarkGray
-& $git -C $root fetch origin 2>&1 | ForEach-Object { Write-Host "  $_" -ForegroundColor DarkGray }
-if ($LASTEXITCODE -ne 0) { Fail "git fetch failed (network?)" }
+  # fetch latest remote state
+  Write-Host "  fetching origin..." -ForegroundColor DarkGray
+  $r = Invoke-Git -C $root fetch origin
+  Show-GitOutput $r
+  if ($r.Code -ne 0) { Fail "git fetch failed (network?)" }
 
-# working tree must be clean
-$dirty = (& $git -C $root status --porcelain 2>$null)
-if ($dirty) {
-  Write-Host "  working tree is NOT clean:" -ForegroundColor Red
-  $dirty | ForEach-Object { Write-Host "    $_" -ForegroundColor Red }
-  Fail "commit or stash your changes first"
-}
+  # working tree must be clean
+  $dirty = (Invoke-Git -C $root status --porcelain).Output
+  if ($dirty) {
+    Write-Host "  working tree is NOT clean:" -ForegroundColor Red
+    $dirty | ForEach-Object { Write-Host "    $_" -ForegroundColor Red }
+    Fail "commit or stash your changes first"
+  }
 
-# local must equal origin/master
-$local  = (& $git -C $root rev-parse HEAD).Trim()
-$remote = (& $git -C $root rev-parse origin/master 2>$null).Trim()
-if ($local -ne $remote) {
-  Write-Host "  local  : $local" -ForegroundColor Red
-  Write-Host "  origin : $remote" -ForegroundColor Red
-  Fail "local master is not in sync with origin/master (run 'git pull --ff-only' or 'git push')"
-}
-Write-Host "  OK: clean and in sync ($($local.Substring(0,7)))" -ForegroundColor Green
+  # local must equal origin/master
+  $local  = (Invoke-Git -C $root rev-parse HEAD).Output[-1].ToString().Trim()
+  $remote = (Invoke-Git -C $root rev-parse origin/master).Output[-1].ToString().Trim()
+  if ($local -ne $remote) {
+    Write-Host "  local  : $local" -ForegroundColor Red
+    Write-Host "  origin : $remote" -ForegroundColor Red
+    Fail "local master is not in sync with origin/master (run 'git pull --ff-only' or 'git push')"
+  }
+  Write-Host "  OK: clean and in sync ($($local.Substring(0,7)))" -ForegroundColor Green
 
 } else {
   Write-Host "  SKIPPED (SkipGitCheck)" -ForegroundColor DarkGray
@@ -94,11 +116,14 @@ $pkgJson = $pkg | ConvertTo-Json -Depth 20
 if ($SkipGitCheck) {
   Write-Host "  version file bumped to $newVersion (git steps skipped)" -ForegroundColor Green
 } else {
-  & $git -C $root add package.json 2>&1 | Out-Null
-  & $git -C $root -c user.name="timefeishi" -c user.email="timefeishi@users.noreply.github.com" commit -m "release v$newVersion" 2>&1 | ForEach-Object { Write-Host "  $_" -ForegroundColor DarkGray }
-  if ($LASTEXITCODE -ne 0) { Fail "failed to commit version bump" }
-  & $git -C $root push origin master 2>&1 | ForEach-Object { Write-Host "  $_" -ForegroundColor DarkGray }
-  if ($LASTEXITCODE -ne 0) { Fail "git push failed (network?)" }
+  Invoke-Git -C $root add package.json | Out-Null
+  $r = Invoke-Git -C $root -c user.name="timefeishi" -c user.email="timefeishi@users.noreply.github.com" commit -m "release v$newVersion"
+  Show-GitOutput $r
+  if ($r.Code -ne 0) { Fail "failed to commit version bump" }
+
+  $r = Invoke-Git -C $root push origin master
+  Show-GitOutput $r
+  if ($r.Code -ne 0) { Fail "git push failed (network?)" }
   Write-Host "  version bumped to $newVersion and pushed" -ForegroundColor Green
 }
 
@@ -112,8 +137,15 @@ if (-not $env:GH_TOKEN) {
   Fail "GH_TOKEN required for publishing"
 }
 
-& powershell -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "publish.ps1") -Publish
-if ($LASTEXITCODE -ne 0) { Fail "publish.ps1 failed" }
+# publish.ps1 must run with the project dir as cwd (it invokes
+# node_modules\.bin\electron-builder.cmd, which resolves package.json from cwd).
+Push-Location $root
+try {
+  & powershell -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "publish.ps1") -Publish
+  if ($LASTEXITCODE -ne 0) { Fail "publish.ps1 failed" }
+} finally {
+  Pop-Location
+}
 
 # ── 4. done ───────────────────────────────────────────────────────────────
 Write-Host ""
