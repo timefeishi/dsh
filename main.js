@@ -235,7 +235,66 @@ function createWindow() {
       nodeIntegration: false,
       contextIsolation: true,
       sandbox: true,
+      preload: path.join(__dirname, "preload.js"),
     },
+  });
+
+  // Inject the floating "检查更新" button into the loaded page (packaged only;
+  // dev has no updater). The button calls window.dshUpdater.check() (preload)
+  // and shows the result in a small toast.
+  mainWindow.webContents.on("did-finish-load", () => {
+    if (!app.isPackaged) return;
+    mainWindow.webContents.executeJavaScript(
+      `(() => {
+        if (window.__dshUpdateBtnInstalled) return;
+        window.__dshUpdateBtnInstalled = true;
+        const style = document.createElement('style');
+        style.textContent = \`
+          #dsh-update-btn {
+            position: fixed; right: 16px; bottom: 60px; z-index: 2147483647;
+            padding: 8px 14px; border: 1px solid rgba(255,255,255,.18);
+            border-radius: 999px; background: rgba(15,17,21,.85);
+            color: #e8edf5; font: 13px system-ui; cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,.35); backdrop-filter: blur(4px);
+            transition: background .15s;
+          }
+          #dsh-update-btn:hover { background: rgba(40,48,68,.95); }
+          #dsh-update-btn:disabled { opacity: .6; cursor: default; }
+          #dsh-update-toast {
+            position: fixed; right: 16px; bottom: 108px; z-index: 2147483647;
+            padding: 10px 16px; border-radius: 10px; background: rgba(15,17,21,.92);
+            color: #e8edf5; font: 13px system-ui; border: 1px solid rgba(255,255,255,.15);
+            box-shadow: 0 4px 16px rgba(0,0,0,.4); display: none; max-width: 360px;
+          }
+        \`;
+        document.head.appendChild(style);
+        const btn = document.createElement('button');
+        btn.id = 'dsh-update-btn';
+        btn.textContent = '检查更新';
+        btn.onclick = async () => {
+          if (btn.disabled) return;
+          btn.disabled = true; btn.textContent = '检查中…';
+          try {
+            const res = await window.dshUpdater.check();
+            showToast(res);
+          } catch (e) {
+            showToast('检查更新失败：' + (e && e.message ? e.message : e));
+          } finally {
+            btn.disabled = false; btn.textContent = '检查更新';
+          }
+        };
+        const toast = document.createElement('div');
+        toast.id = 'dsh-update-toast';
+        function showToast(text) {
+          toast.textContent = text;
+          toast.style.display = 'block';
+          clearTimeout(toast._t);
+          toast._t = setTimeout(() => { toast.style.display = 'none'; }, 6000);
+        }
+        document.body.appendChild(btn);
+        document.body.appendChild(toast);
+      })()`
+    ).catch((err) => appendLog(`update button injection failed: ${err.message}`));
   });
 
   mainWindow.webContents.setWindowOpenHandler(({ url }) => {
@@ -381,16 +440,18 @@ function setupAutoUpdater() {
   }
 }
 
+// Returns a Promise<string> describing the outcome (for the UI toast / IPC).
 function checkForUpdates(manual) {
   if (!app.isPackaged || !updaterAvailable()) {
+    const msg = "当前为开发模式，不支持自动更新。";
     if (manual) {
       dialog.showMessageBox(mainWindow, {
         type: "info",
         title: "检查更新",
-        message: "当前为开发模式，不支持自动更新。",
+        message: msg,
       });
     }
-    return;
+    return Promise.resolve(msg);
   }
   try {
     const updater = getAutoUpdater();
@@ -400,18 +461,23 @@ function checkForUpdates(manual) {
     if (process.env.DSH_UPDATE_URL) {
       updater.setFeedURL({ provider: "generic", url: process.env.DSH_UPDATE_URL });
     }
-    updater.checkForUpdates().catch((err) => {
-      appendLog(`checkForUpdates failed: ${err.message}`);
-      if (manual) {
-        dialog.showMessageBox(mainWindow, {
-          type: "error",
-          title: "检查更新失败",
-          message: `无法连接到更新服务器：\n${err.message}`,
-        });
+    return updater.checkForUpdates().then(
+      () => "已是最新版本",
+      (err) => {
+        appendLog(`checkForUpdates failed: ${err.message}`);
+        if (manual) {
+          dialog.showMessageBox(mainWindow, {
+            type: "error",
+            title: "检查更新失败",
+            message: `无法连接到更新服务器：\n${err.message}`,
+          });
+        }
+        return `检查更新失败：${err.message}`;
       }
-    });
+    );
   } catch (err) {
     appendLog(`checkForUpdates threw: ${err.message}`);
+    return Promise.resolve(`检查更新失败：${err.message}`);
   }
 }
 
@@ -443,6 +509,11 @@ if (!gotLock) {
   app.whenReady().then(async () => {
     createTray();
     setupAutoUpdater();
+
+    // IPC for the injected "检查更新" button (renderer → main).
+    const { ipcMain } = require("electron");
+    ipcMain.handle("dsh:check-updates", () => checkForUpdates(true));
+
     const autoStart = process.argv.includes(AUTO_START_ARG);
     appendLog(`launch mode: ${app.isPackaged ? "packaged" : "dev"}${autoStart ? " (auto-start)" : ""}`);
 

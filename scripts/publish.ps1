@@ -62,6 +62,32 @@ if ($CleanAll) {
 
 Remove-StaleReleaseDirs
 
+# ── running-app guard ─────────────────────────────────────────────────────
+# The build deletes $out (including win-unpacked) wholesale; a running app
+# from there locks exe/dll files and makes the deletion fail. Detect and stop.
+function Get-RunningAppProcesses {
+  $outExe = Join-Path $out "win-unpacked\DeepSeek Harness.exe"
+  if (-not (Test-Path $outExe)) { return @() }
+  @(Get-Process -Name "DeepSeek Harness" -ErrorAction SilentlyContinue |
+    Where-Object { $_.Path -eq $outExe })
+}
+
+$running = Get-RunningAppProcesses
+if ($running.Count -gt 0) {
+  Write-Host ""
+  Write-Host "The app is currently running from $out (win-unpacked)." -ForegroundColor Yellow
+  Write-Host "The build deletes this folder, so it must be closed first." -ForegroundColor Yellow
+  $answer = Read-Host "Close it now? [y/N]"
+  if ($answer -match '^[yY]') {
+    $running | Stop-Process -Force
+    Write-Host "Closed $($running.Count) process(es)." -ForegroundColor DarkGray
+    Start-Sleep -Seconds 2
+  } else {
+    Write-Host "Aborted. Please close the app and re-run." -ForegroundColor Red
+    exit 1
+  }
+}
+
 Write-Host "==> Preparing bundled runtime (resources\dsh-runtime)" -ForegroundColor Cyan
 & powershell -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "prepare-runtime.ps1")
 
