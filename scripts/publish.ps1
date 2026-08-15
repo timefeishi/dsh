@@ -29,9 +29,9 @@ Push-Location $root
 try {
   if ($Publish) {
     if (-not $env:GH_TOKEN) { throw "Publish requested but GH_TOKEN is not set" }
-    & "node_modules\.bin\electron-builder.cmd" --win nsis -c.directories.output=release-upd --publish always
+    & "node_modules\.bin\electron-builder.cmd" --win nsis --% -c.directories.output=release-upd --publish always
   } else {
-    & "node_modules\.bin\electron-builder.cmd" --win nsis -c.directories.output=release-upd
+    & "node_modules\.bin\electron-builder.cmd" --win nsis --% -c.directories.output=release-upd
   }
   if ($LASTEXITCODE -ne 0) { throw "electron-builder failed with exit code $LASTEXITCODE" }
 } finally {

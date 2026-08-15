@@ -30,7 +30,11 @@ $dshBin = Get-ChildItem (Join-Path $npxRoot "*\node_modules\@deepseek-ai\dsh\lib
   Sort-Object LastWriteTime -Descending | Select-Object -First 1
 if (-not $dshBin) { throw "No @deepseek-ai/dsh found under $npxRoot. Run: npx --yes @deepseek-ai/dsh --version" }
 
-$srcNodeModules = Split-Path -Parent (Split-Path -Parent (Split-Path -Parent $dshBin.FullName))
+# bin.js -> lib(1) -> dsh(2) -> @deepseek-ai(3) -> node_modules
+$srcNodeModules = $dshBin.Directory.Parent.Parent.Parent.FullName
+if (-not (Test-Path (Join-Path $srcNodeModules "@deepseek-ai\dsh\package.json"))) {
+  throw "Unexpected npx cache layout: $srcNodeModules"
+}
 Write-Host "   copying dependency tree from $srcNodeModules"
 robocopy $srcNodeModules (Join-Path $dst "node_modules") /E /MT:16 /NFL /NDL /NJH /NJS /NP /R:1 /W:1 | Out-Null
 if ($LASTEXITCODE -ge 8) { throw "robocopy failed with exit code $LASTEXITCODE" }
