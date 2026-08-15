@@ -7,9 +7,11 @@ release-upd/
 release-upd-*/
 dist/
 
-# bundled runtime (vendored node + dsh dependency tree, ~335MB — regenerated
+# bundled runtime (vendored node + dsh dependency tree — regenerated
 # from the npx cache by scripts/prepare-runtime.ps1 before packaging)
 resources/dsh-runtime/
+resources/dsh-runtime.tar.gz
+resources/dsh-runtime.sha256
 
 # logs
 logs/
