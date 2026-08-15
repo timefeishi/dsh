@@ -51,13 +51,18 @@ let serverChild = null;
 let startedByUs = false;
 let quitting = false;
 
-// ── locating the dsh CLI ──────────────────────────────────────────────────
-// Packaged: resources/dsh-runtime/node.exe + node_modules (full closure).
+// ── locating / preparing the dsh runtime ─────────────────────────────────
+// Packaged: the installer ships dsh-runtime.tar.gz + dsh-runtime.sha256
+// (single file, fast install). On first launch (or whenever the hash — the
+// dependency fingerprint — differs) we extract it to the user data dir, so:
+//   * install is fast (one big file, not 33k small ones)
+//   * dependency changes (add/remove/upgrade) re-extract automatically
 // Dev: newest @deepseek-ai/dsh under the npx cache, else `npx --yes`.
 
+const RUNTIME_DIR = "dsh-runtime";
+
 function runtimeRoot() {
-  if (app.isPackaged) return path.join(process.resourcesPath, "dsh-runtime");
-  return path.join(app.getAppPath(), "resources", "dsh-runtime");
+  return path.join(app.getPath("userData"), RUNTIME_DIR);
 }
 
 function findBundledNode() {
@@ -68,6 +73,134 @@ function findBundledNode() {
 function findBundledDshBin() {
   const p = path.join(runtimeRoot(), "node_modules", "@deepseek-ai", "dsh", "lib", "bin.js");
   return fs.existsSync(p) ? p : null;
+}
+
+// Where the installer placed the packed runtime.
+function packedRuntimePaths() {
+  if (!app.isPackaged) return null;
+  const gz = path.join(process.resourcesPath, "dsh-runtime.tar.gz");
+  const sha = path.join(process.resourcesPath, "dsh-runtime.sha256");
+  if (!fs.existsSync(gz) || !fs.existsSync(sha)) return null;
+  return { gz, sha };
+}
+
+// Expected dependency fingerprint (from the installer's sha file).
+function expectedRuntimeHash() {
+  const packed = packedRuntimePaths();
+  if (!packed) return null;
+  try {
+    return fs.readFileSync(packed.sha, "utf8").trim().toLowerCase();
+  } catch {
+    return null;
+  }
+}
+
+// Fingerprint of the currently extracted runtime (stored next to it).
+function extractedRuntimeHash() {
+  const marker = path.join(runtimeRoot(), ".dsh-runtime.sha256");
+  try {
+    return fs.readFileSync(marker, "utf8").trim().toLowerCase();
+  } catch {
+    return null;
+  }
+}
+
+function writeExtractedHash(hash) {
+  try {
+    fs.writeFileSync(path.join(runtimeRoot(), ".dsh-runtime.sha256"), hash + "\n");
+  } catch {}
+}
+
+// Extract dsh-runtime.tar.gz into userData. Uses tar.exe (bundled with
+// Windows 10/11); falls back to a Node-side gunzip+untar if tar is missing.
+// The archive contains a top-level "dsh-runtime/" entry, so extract into
+// userData directly — the prefix lands at userData/dsh-runtime.
+function extractRuntime() {
+  return new Promise((resolve, reject) => {
+    const packed = packedRuntimePaths();
+    if (!packed) { reject(new Error("packed runtime not found")); return; }
+
+    const userData = app.getPath("userData");
+    const dest = runtimeRoot();
+    if (fs.existsSync(dest)) {
+      try { fs.rmSync(dest, { recursive: true, force: true }); } catch {}
+    }
+    fs.mkdirSync(userData, { recursive: true });
+
+    const tar = path.join(process.env.WINDIR || "C:\\Windows", "System32", "tar.exe");
+    const useTar = fs.existsSync(tar);
+    if (useTar) {
+      appendLog(`extracting runtime via tar (${packed.gz})`);
+      const child = spawn(tar, ["-xzf", packed.gz, "-C", userData], { windowsHide: true });
+      child.on("error", (err) => { reject(err); });
+      child.on("exit", (code) => {
+        if (code === 0) resolve();
+        else reject(new Error(`tar exit ${code}`));
+      });
+      return;
+    }
+
+    // Fallback: pure-Node extraction (slower, but no external dependency).
+    appendLog("tar.exe not found, extracting with Node zlib fallback");
+    const zlib = require("zlib");
+    const readStream = fs.createReadStream(packed.gz);
+    const gunzip = zlib.createGunzip();
+    let pending = Buffer.alloc(0);
+    readStream.pipe(gunzip);
+    gunzip.on("data", (chunk) => {
+      pending = Buffer.concat([pending, chunk]);
+    });
+    gunzip.on("end", () => {
+      try {
+        untarBuffer(pending, userData);
+        resolve();
+      } catch (err) { reject(err); }
+    });
+    gunzip.on("error", reject);
+    readStream.on("error", reject);
+  });
+}
+
+// Minimal POSIX ustar reader for the fallback path.
+function untarBuffer(buf, dest) {
+  const paths = [];
+  let off = 0;
+  while (off + 512 <= buf.length) {
+    const header = buf.slice(off, off + 512);
+    const name = header.slice(0, 100).toString("utf8").replace(/\0.*$/, "");
+    if (name.length === 0) break;
+    const sizeStr = header.slice(124, 136).toString("utf8").replace(/\0.*$/, "").trim();
+    const size = parseInt(sizeStr, 8) || 0;
+    const type = String.fromCharCode(header[156] || 48);
+    const filePath = path.join(dest, name);
+    if (type === "5") {
+      fs.mkdirSync(filePath, { recursive: true });
+    } else if (type === "0" || type === "") {
+      fs.mkdirSync(path.dirname(filePath), { recursive: true });
+      fs.writeFileSync(filePath, buf.slice(off + 512, off + 512 + size));
+      paths.push(filePath);
+    }
+    off += 512 + Math.ceil(size / 512) * 512;
+  }
+  return paths;
+}
+
+// Ensure the runtime is extracted and current; returns true when ready.
+async function ensureRuntime() {
+  if (!app.isPackaged) return true; // dev: use npx cache below
+  const expected = expectedRuntimeHash();
+  const current = extractedRuntimeHash();
+  if (expected && current === expected && findBundledDshBin()) {
+    return true; // already up to date
+  }
+  if (expected) {
+    appendLog(`runtime hash mismatch (expected ${expected ? expected.slice(0, 8) : "none"}, have ${current ? current.slice(0, 8) : "none"}) — re-extracting`);
+    await extractRuntime();
+    writeExtractedHash(expected);
+    appendLog("runtime extracted");
+    return true;
+  }
+  return false; // packaged but no packed runtime shipped → caller decides
 }
 
 function findCachedDshBin() {
@@ -517,6 +650,24 @@ if (!gotLock) {
     const autoStart = process.argv.includes(AUTO_START_ARG);
     appendLog(`launch mode: ${app.isPackaged ? "packaged" : "dev"}${autoStart ? " (auto-start)" : ""}`);
 
+    // Ensure the bundled runtime is extracted & current (packaged only).
+    // Show the splash while this may take a while on first run / after an
+    // update with changed dependencies.
+    const win = createWindow();
+    showSplash(win);
+    try {
+      await ensureRuntime();
+    } catch (err) {
+      appendLog(`ensureRuntime failed: ${err.message}`);
+      dialog.showErrorBox(
+        "DeepSeek Harness 运行环境准备失败",
+        `无法解压内置运行环境：\n${err.message}\n\n日志：${logFile()}`
+      );
+      quitting = true;
+      app.quit();
+      return;
+    }
+
     // Kick off a background update check after the UI is up (manual check
     // stays available from the tray). Non-blocking; safe to call before the
     // server is ready.
@@ -530,18 +681,15 @@ if (!gotLock) {
     if (await serverIsUp()) {
       startedByUs = false;
       if (autoStart) {
-        createWindow();
         mainWindow.loadURL(URL);
         return;
       }
-      showMainWindow();
       mainWindow.loadURL(URL);
+      showMainWindow();
       return;
     }
 
     // Otherwise boot the server ourselves.
-    const win = createWindow();
-    showSplash(win);
     try {
       await startServer();
       startedByUs = true;

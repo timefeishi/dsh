@@ -1,74 +1,78 @@
 {
-    "name":  "dsh-desktop",
-    "productName":  "DeepSeek Harness",
-    "version":  "1.0.1",
-    "description":  "Desktop app for the DeepSeek Harness Web GUI: bundles the dsh web runtime and shows the UI in an embedded window.",
-    "main":  "main.js",
-    "scripts":  {
-                    "start":  "electron .",
-                    "dist":  "electron-builder --win nsis",
-                    "dist:dir":  "electron-builder --win dir",
-                    "publish":  "electron-builder --win nsis --publish always"
-                },
-    "author":  "dsh-desktop",
-    "license":  "MIT",
-    "dependencies":  {
-                         "electron-updater":  "^6.8.9"
-                     },
-    "devDependencies":  {
-                            "electron":  "^33.4.11",
-                            "electron-builder":  "^25.1.8"
-                        },
-    "build":  {
-                  "appId":  "com.deepseek.dsh-desktop",
-                  "productName":  "DeepSeek Harness",
-                  "directories":  {
-                                      "output":  "release"
-                                  },
-                  "files":  [
-                                "main.js",
-                                "preload.js",
-                                "package.json",
-                                "assets/**/*",
-                                "README.md"
-                            ],
-                  "extraResources":  [
-                                         {
-                                             "from":  "resources/dsh-runtime",
-                                             "to":  "dsh-runtime"
-                                         },
-                                         {
-                                             "from":  "assets/icon.ico",
-                                             "to":  "icon.ico"
-                                         }
-                                     ],
-                  "publish":  {
-                                  "provider":  "github",
-                                  "owner":  "timefeishi",
-                                  "repo":  "dsh",
-                                  "releaseType":  "release"
-                              },
-                  "win":  {
-                              "target":  [
-                                             {
-                                                 "target":  "nsis",
-                                                 "arch":  [
-                                                              "x64"
-                                                          ]
-                                             }
-                                         ],
-                              "icon":  "assets/icon.ico",
-                              "artifactName":  "DeepSeek-Harness-Setup-${version}.${ext}"
-                          },
-                  "nsis":  {
-                               "oneClick":  false,
-                               "perMachine":  false,
-                               "allowToChangeInstallationDirectory":  true,
-                               "createDesktopShortcut":  true,
-                               "createStartMenuShortcut":  true,
-                               "shortcutName":  "DeepSeek Harness",
-                               "artifactName":  "DeepSeek-Harness-Setup-${version}.${ext}",
-                               "deleteAppDataOnUninstall":  false
-                           }
-              }
+  "name": "dsh-desktop",
+  "productName": "DeepSeek Harness",
+  "version": "1.0.1",
+  "description": "Desktop app for the DeepSeek Harness Web GUI: bundles the dsh web runtime and shows the UI in an embedded window.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis",
+    "dist:dir": "electron-builder --win dir",
+    "publish": "electron-builder --win nsis --publish always"
+  },
+  "author": "dsh-desktop",
+  "license": "MIT",
+  "dependencies": {
+    "electron-updater": "^6.8.9"
+  },
+  "devDependencies": {
+    "electron": "^33.4.11",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.deepseek.dsh-desktop",
+    "productName": "DeepSeek Harness",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json",
+      "assets/**/*",
+      "README.md"
+    ],
+    "extraResources": [
+      {
+        "from": "resources/dsh-runtime.tar.gz",
+        "to": "dsh-runtime.tar.gz"
+      },
+      {
+        "from": "resources/dsh-runtime.sha256",
+        "to": "dsh-runtime.sha256"
+      },
+      {
+        "from": "assets/icon.ico",
+        "to": "icon.ico"
+      }
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "timefeishi",
+      "repo": "dsh",
+      "releaseType": "release"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.ico",
+      "artifactName": "DeepSeek-Harness-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "DeepSeek Harness",
+      "artifactName": "DeepSeek-Harness-Setup-${version}.${ext}",
+      "deleteAppDataOnUninstall": false
+    }
+  }
 }
