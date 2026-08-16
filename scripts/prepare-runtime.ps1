@@ -14,6 +14,13 @@
 # The sha256 is the "dependency fingerprint": whenever any dependency changes
 # (add/remove/upgrade), the tar.gz bytes change and the hash changes, so an
 # installed app re-extracts its runtime on next launch — no version bookkeeping.
+#
+# The dsh-usage-cost plugin is baked INTO the runtime (see below), so every
+# device that installs the app gets it, and it survives runtime re-extraction
+# because it is re-baked on every build. Override the plugin location with
+# -PluginSource <path> when the layout differs.
+
+param([string]$PluginSource = "")
 
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot   # dsh-desktop/
@@ -46,6 +53,47 @@ if ($LASTEXITCODE -ge 8) { throw "robocopy failed with exit code $LASTEXITCODE" 
 Write-Host "==> Trimming runtime" -ForegroundColor Cyan
 & powershell -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "trim-runtime.ps1")
 if ($LASTEXITCODE -ne 0) { throw "trim-runtime.ps1 failed" }
+
+# 3.5 bake the dsh-usage-cost plugin into the runtime (ships with the app).
+# Copies only the runtime-relevant files (package.json + lib + client.js);
+# the loader resolves the package from the profile's node_modules junction,
+# and main.js ensures that wiring idempotently at launch.
+Write-Host "==> Baking dsh-usage-cost plugin" -ForegroundColor Cyan
+if ([string]::IsNullOrWhiteSpace($PluginSource)) {
+  $PluginSource = Join-Path $root "dsh-usage-cost"      # in-repo plugin source (repo root)
+}
+if (-not (Test-Path $PluginSource)) { throw "plugin source not found: $PluginSource (pass -PluginSource <path>)" }
+$pluginDst = Join-Path $dst "node_modules\dsh-usage-cost"
+New-Item -ItemType Directory -Force -Path $pluginDst | Out-Null
+foreach ($item in @("package.json", "client.js", "lib")) {
+  $src = Join-Path $PluginSource $item
+  if (-not (Test-Path $src)) { throw "plugin missing required file: $src" }
+  Copy-Item $src (Join-Path $pluginDst $item) -Recurse -Force
+}
+Write-Host "   baked plugin -> $pluginDst"
+
+# Patch the api-proxy settings whitelist inside the baked runtime so the
+# browser can read/edit the usage-cost namespace (same patch install.ps1
+# applies to a live runtime). Idempotent.
+$apiproxy = Join-Path $dst "node_modules\@deepseek-ai\dsh-host-apiproxy\lib\index.js"
+if (Test-Path $apiproxy) {
+  $raw = Get-Content $apiproxy -Raw
+  if ($raw -notmatch '"usage-cost"') {
+    $patched = [regex]::Replace(
+      $raw,
+      '"web-search-deepseek"(\r?\n)[ \t]*\]',
+      { param($m)
+        '"web-search-deepseek",' + $m.Groups[1].Value + "`t`"usage-cost`"" + $m.Groups[1].Value + "]"
+      })
+    if ($patched -eq $raw) { throw "could not locate WEB_SETTINGS_NAMESPACES tail to patch in $apiproxy" }
+    Set-Content -Path $apiproxy -Value $patched -Encoding UTF8 -NoNewline
+    Write-Host "   patched apiproxy whitelist (usage-cost)"
+  } else {
+    Write-Host "   apiproxy whitelist already patched"
+  }
+} else {
+  Write-Host "   WARN: apiproxy lib not found, whitelist NOT patched: $apiproxy"
+}
 
 # 4. pack trimmed runtime into a single tar.gz
 Write-Host "==> Packing runtime" -ForegroundColor Cyan

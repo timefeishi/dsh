@@ -323,6 +323,51 @@ function appendLog(text) {
   } catch {}
 }
 
+// ── dsh-usage-cost plugin self-heal ────────────────────────────────────────
+// The plugin ships INSIDE the bundled runtime (baked by
+// scripts/prepare-runtime.ps1). The Cordis loader mounts it through the web
+// profile's patch layer and resolves the package through the profile's
+// node_modules, so on every launch we idempotently ensure those two wiring
+// points exist. This also repairs a device whose runtime was re-extracted
+// over a manual install. Failures are logged, never fatal.
+function dshHomeDir() {
+  return process.env.DSH_HOME || path.join(os.homedir(), ".dsh");
+}
+function ensureUsageCostMount() {
+  const profileDir = path.join(dshHomeDir(), "profiles", "web");
+  const patchPath = path.join(profileDir, "cordis.patch.yml");
+  try {
+    fs.mkdirSync(profileDir, { recursive: true });
+    let content = "";
+    try { content = fs.readFileSync(patchPath, "utf8"); } catch { /* missing */ }
+    if (content.includes("dsh-usage-cost")) return;
+    const block = "- insert:\n    - id: usage-cost\n      name: dsh-usage-cost\n";
+    if (/\[\]\s*$/.test(content)) content = content.replace(/\[\]\s*$/, block);
+    else content = content.trimEnd() + (content.trimEnd().length ? "\n" : "") + block;
+    fs.writeFileSync(patchPath, content, "utf8");
+    appendLog("usage-cost mount row ensured in " + patchPath);
+  } catch (err) {
+    appendLog("usage-cost mount row failed: " + err.message);
+  }
+}
+function ensureUsageCostLink() {
+  const link = path.join(dshHomeDir(), "profiles", "node_modules", "dsh-usage-cost");
+  const target = path.join(runtimeRoot(), "node_modules", "dsh-usage-cost");
+  try {
+    if (!fs.existsSync(target)) return; // runtime without the plugin — nothing to wire
+    fs.mkdirSync(path.dirname(link), { recursive: true });
+    try {
+      const st = fs.lstatSync(link);
+      if (st.isSymbolicLink()) return; // junction already in place
+      fs.rmSync(link, { recursive: true, force: true });
+    } catch { /* not exists */ }
+    fs.symlinkSync(target, link, "junction");
+    appendLog("usage-cost junction ensured: " + link);
+  } catch (err) {
+    appendLog("usage-cost junction failed: " + err.message);
+  }
+}
+
 // ── starting the server ───────────────────────────────────────────────────
 
 function startServer() {
@@ -867,6 +912,11 @@ if (!gotLock) {
       app.quit();
       return;
     }
+
+    // dsh-usage-cost plugin ships in the bundled runtime — make sure the
+    // profile wires it up (idempotent; also repairs re-extracted runtimes).
+    ensureUsageCostMount();
+    ensureUsageCostLink();
 
     // Kick off a background update check after the UI is up (manual check
     // stays available from the tray). Non-blocking; safe to call before the

@@ -164,6 +164,22 @@ powershell -ExecutionPolicy Bypass -File scripts\publish.ps1 -CleanAll
 
 ---
 
+## 9.5 关联项目：dsh-usage-cost 插件（2026-08-16 新增）
+
+> 在仓库内 `dsh-usage-cost\` 独立开发的 Harness 用量/费用统计插件，
+> **独立项目，记忆文件见 `dsh-usage-cost\PROJECT_MEMORY.md`**（勿与本文件混淆）。
+
+- 功能：外置计费窗口（左侧粘连/跟随）、每条回复「本轮」费用标签、今日/本周/本月统计、峰谷自动计价
+- 安装：运行时 `dsh-runtime\node_modules\dsh-usage-cost` + `~/.dsh/profiles/web/cordis.patch.yml`（`- insert:` 块）+ apiproxy 白名单
+- 与本应用的关系：插件装进 Harness 运行时，随本应用一起工作；**应用"关窗驻留托盘"行为直接影响插件的联动关闭逻辑**（插件用 `visibilitychange` 感知窗口隐藏）
+- 状态：功能完整、用户确认可用；更新流程 = 改源码 → `install.ps1` → 重启 Harness（app 端无开发者工具，只有重启能加载新代码）
+- **运行方式变更（2026-08-16）**：用户端安装（`D:\Program Files\DeepSeek Harness`）已卸载（仅验证用），此后用**开发端** `release-upd\win-unpacked\DeepSeek Harness.exe`
+- ⚠️ **注意**：发布新版若运行时依赖变化，`dsh-runtime.sha256` 不一致会触发自动重解压 → **插件与 apiproxy 白名单补丁被清**，需重跑插件的 `install.ps1` 恢复
+- **随 app 分发（方案 A，2026-08-16 已实施）**：插件烘焙进运行时 —— `prepare-runtime.ps1` 在 trim 后打包前复制插件（package.json+lib+client.js）到 `resources\dsh-runtime\node_modules\dsh-usage-cost` 并给 apiproxy 打白名单补丁；`main.js` 启动时（ensureRuntime 后）幂等确保 `~/.dsh/profiles/web/cordis.patch.yml` 的 `- insert:` 挂载行 + `~/.dsh/profiles/node_modules/dsh-usage-cost` junction。**效果：每台装 app 的设备自动带插件，且随每次构建重新烘焙、免疫重解压清空**。包体增量约 0.06MB（可忽略）
+- 插件源码位置：仓库内 `dsh-usage-cost\`（`prepare-runtime.ps1` 默认取仓库内 `dsh-usage-cost`，可用 `-PluginSource` 覆盖）
+
+---
+
 ## 9. 当前状态快照（2026-08-16）
 
 - 最新版本 v1.0.4 已发布（含：设置面板更新栏、overlay 页签修复、进度条优化、更新说明）
