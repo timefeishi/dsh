@@ -140,9 +140,17 @@ if ($SkipGitCheck) {
 Write-Host ""
 Write-Host "[3/4] Building installer..." -ForegroundColor Yellow
 
+# GH_TOKEN resolution: environment variable first, then a local git-ignored
+# token file (scripts/gh-token.txt) so double-clicking 发布新版.bat works
+# without setting env vars every time.
+$tokenFile = Join-Path $PSScriptRoot "gh-token.txt"
+if (-not $env:GH_TOKEN -and (Test-Path $tokenFile)) {
+  $env:GH_TOKEN = (Get-Content $tokenFile -Raw).Trim()
+}
 if (-not $env:GH_TOKEN) {
-  Write-Host "  GH_TOKEN is not set. Set it before running:" -ForegroundColor Yellow
-  Write-Host "    `$env:GH_TOKEN = `"your-token`"" -ForegroundColor Yellow
+  Write-Host "  GH_TOKEN is not set. Either:" -ForegroundColor Yellow
+  Write-Host "    1. Set it in this session:   `$env:GH_TOKEN = `"your-token`"" -ForegroundColor Yellow
+  Write-Host "    2. Or save it once to:       scripts\gh-token.txt   (git-ignored, reused every time)" -ForegroundColor Yellow
   Fail "GH_TOKEN required for publishing"
 }
 

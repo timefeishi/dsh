@@ -21,6 +21,9 @@ logs/
 builder-debug.yml
 *.blockmap
 
+# GitHub token (local only — never commit)
+scripts/gh-token.txt
+
 # OS
 Thumbs.db
 .DS_Store
