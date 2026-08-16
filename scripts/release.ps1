@@ -36,9 +36,18 @@ function Invoke-Git {
 
 # Show git output lines (ErrorRecords from stderr render as their text).
 function Show-GitOutput($result) {
-  foreach ($line in $result.Output) {
+  foreach ($line in @($result.Output)) {
     Write-Host "  $line" -ForegroundColor DarkGray
   }
+}
+
+# Last non-empty stdout line as a string. git printing a single line makes
+# the filtered result a bare [string] (not an array), so [-1] would index
+# characters — Select-Object -Last 1 handles both shapes.
+function Get-GitLastLine($result) {
+  $lines = @($result.Output) | Where-Object { $_ -is [string] -and $_.Trim().Length -gt 0 }
+  if (-not $lines) { return "" }
+  return ($lines | Select-Object -Last 1).ToString().Trim()
 }
 
 Write-Host ""
@@ -55,7 +64,7 @@ if (-not $SkipGitCheck) {
   if (-not (Test-Path (Join-Path $root ".git"))) { Fail "not a git repository: $root" }
 
   # must be on master
-  $branch = (Invoke-Git -C $root rev-parse --abbrev-ref HEAD).Output[-1].ToString().Trim()
+  $branch = Get-GitLastLine (Invoke-Git -C $root rev-parse --abbrev-ref HEAD)
   if ($branch -ne "master") { Fail "current branch is '$branch', expected 'master'" }
 
   # fetch latest remote state
@@ -65,7 +74,7 @@ if (-not $SkipGitCheck) {
   if ($r.Code -ne 0) { Fail "git fetch failed (network?)" }
 
   # working tree must be clean
-  $dirty = (Invoke-Git -C $root status --porcelain).Output
+  $dirty = @((Invoke-Git -C $root status --porcelain).Output) | Where-Object { $_ -is [string] -and $_.Trim().Length -gt 0 }
   if ($dirty) {
     Write-Host "  working tree is NOT clean:" -ForegroundColor Red
     $dirty | ForEach-Object { Write-Host "    $_" -ForegroundColor Red }
@@ -73,8 +82,8 @@ if (-not $SkipGitCheck) {
   }
 
   # local must equal origin/master
-  $local  = (Invoke-Git -C $root rev-parse HEAD).Output[-1].ToString().Trim()
-  $remote = (Invoke-Git -C $root rev-parse origin/master).Output[-1].ToString().Trim()
+  $local  = Get-GitLastLine (Invoke-Git -C $root rev-parse HEAD)
+  $remote = Get-GitLastLine (Invoke-Git -C $root rev-parse origin/master)
   if ($local -ne $remote) {
     Write-Host "  local  : $local" -ForegroundColor Red
     Write-Host "  origin : $remote" -ForegroundColor Red
