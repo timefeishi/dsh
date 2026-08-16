@@ -11,6 +11,7 @@
 
 param(
   [string]$Version,
+  [string]$ReleaseNotes,
   [switch]$SkipGitCheck
 )
 
@@ -121,6 +122,28 @@ $pkg.version = $newVersion
 $pkgJson = $pkg | ConvertTo-Json -Depth 20
 [System.IO.File]::WriteAllText($pkgPath, $pkgJson, (New-Object System.Text.UTF8Encoding($false)))
 
+# ── release notes ─────────────────────────────────────────────────────────
+# Interactive multi-line input: type lines, end with an empty line (or pass
+# -ReleaseNotes "..." to skip the prompt).
+$releaseNotes = ""
+if ($ReleaseNotes) {
+  $releaseNotes = $ReleaseNotes
+} elseif (-not $SkipGitCheck) {
+  Write-Host "  Enter release notes (one item per line, empty line to finish):" -ForegroundColor DarkGray
+  while ($true) {
+    $line = Read-Host "    -"
+    if ([string]::IsNullOrWhiteSpace($line)) { break }
+    $releaseNotes = if ($releaseNotes) { "$releaseNotes`n$line" } else { $line }
+  }
+}
+$notesFile = $null
+if ($releaseNotes) {
+  $notesFile = Join-Path $env:TEMP "dsh-release-notes-$newVersion.txt"
+  $mdLines = @("# DeepSeek Harness $newVersion", "", "## 更新内容", "") + @($releaseNotes -split "`n" | ForEach-Object { "- $_" })
+  [System.IO.File]::WriteAllText($notesFile, ($mdLines -join "`n"), (New-Object System.Text.UTF8Encoding($false)))
+  Write-Host "  release notes saved ($($releaseNotes -split "`n").Count 条)" -ForegroundColor Green
+}
+
 # commit the version bump (skipped with -SkipGitCheck: only touch package.json)
 if ($SkipGitCheck) {
   Write-Host "  version file bumped to $newVersion (git steps skipped)" -ForegroundColor Green
@@ -158,7 +181,9 @@ if (-not $env:GH_TOKEN) {
 # node_modules\.bin\electron-builder.cmd, which resolves package.json from cwd).
 Push-Location $root
 try {
-  & powershell -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "publish.ps1") -Publish
+  $pubArgs = @("-Publish")
+  if ($notesFile) { $pubArgs += "-ReleaseNotesFile"; $pubArgs += $notesFile }
+  & powershell -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "publish.ps1") @pubArgs
   if ($LASTEXITCODE -ne 0) { Fail "publish.ps1 failed" }
 } finally {
   Pop-Location

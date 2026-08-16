@@ -11,7 +11,8 @@
 
 param(
   [switch]$Publish,
-  [switch]$CleanAll
+  [switch]$CleanAll,
+  [string]$ReleaseNotesFile
 )
 
 $ErrorActionPreference = "Stop"
@@ -99,7 +100,13 @@ Push-Location $root
 try {
   if ($Publish) {
     if (-not $env:GH_TOKEN) { throw "Publish requested but GH_TOKEN is not set" }
-    & "node_modules\.bin\electron-builder.cmd" --win nsis --% -c.directories.output=release-upd --publish always
+    $args = @("--win", "nsis", "--%", "-c.directories.output=release-upd", "--publish", "always")
+    if ($ReleaseNotesFile) {
+      if (-not (Test-Path $ReleaseNotesFile)) { throw "release notes file not found: $ReleaseNotesFile" }
+      $args += "--config.releaseInfo.releaseNotesFile=$ReleaseNotesFile"
+      Write-Host "  release notes: $ReleaseNotesFile" -ForegroundColor DarkGray
+    }
+    & "node_modules\.bin\electron-builder.cmd" @args
   } else {
     & "node_modules\.bin\electron-builder.cmd" --win nsis --% -c.directories.output=release-upd
   }

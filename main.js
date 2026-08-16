@@ -711,12 +711,21 @@ function setupAutoUpdater() {
     updater.on("update-available", (info) => {
       appendLog(`update available: ${info.version}`);
       showMainWindow();
+      // info.releaseNotes carries the GitHub release body (when published
+      // with release notes); fall back to a generic line otherwise.
+      let detail = "是否现在下载并更新？更新完成后需要重启应用。";
+      const notes = info && (info.releaseNotes || info.releaseName);
+      if (notes) {
+        let text = notes;
+        try { text = JSON.parse(notes).map((n) => n.note).join("\n"); } catch {}
+        detail = `${String(text).slice(0, 1200)}\n\n${detail}`;
+      }
       dialog
         .showMessageBox(mainWindow, {
           type: "info",
           title: "发现新版本",
           message: `DeepSeek Harness ${info.version} 已发布`,
-          detail: "是否现在下载并更新？更新完成后需要重启应用。",
+          detail,
           buttons: ["下载更新", "稍后"],
           defaultId: 0,
           cancelId: 1,
