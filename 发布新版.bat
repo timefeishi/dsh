@@ -7,7 +7,7 @@ rem  首次使用前先设置 token（在"此电脑-属性-高级系统设置-�
 rem    GH_TOKEN = 你的 GitHub token（勾选 repo 权限）
 rem ============================================
 chcp 65001 >nul
-cd /d "%~dp0.."
-powershell -ExecutionPolicy Bypass -NoProfile -File "%~dp0release.ps1"
+cd /d "%~dp0"
+powershell -ExecutionPolicy Bypass -NoProfile -File "%~dp0scripts\release.ps1"
 echo.
 pause
