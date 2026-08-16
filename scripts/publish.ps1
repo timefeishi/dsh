@@ -100,17 +100,21 @@ Push-Location $root
 try {
   if ($Publish) {
     if (-not $env:GH_TOKEN) { throw "Publish requested but GH_TOKEN is not set" }
-    $args = @("--win", "nsis", "--%", "-c.directories.output=release-upd", "--publish", "always")
+    # Build the electron-builder command line as one string and run via cmd,
+    # which does not do PowerShell parameter parsing (avoids -c.* being
+    # misread as PS switches).
+    $cmdLine = "node_modules\.bin\electron-builder.cmd --win nsis -c.directories.output=release-upd --publish always"
     if ($ReleaseNotesFile) {
       if (-not (Test-Path $ReleaseNotesFile)) { throw "release notes file not found: $ReleaseNotesFile" }
-      $args += "--config.releaseInfo.releaseNotesFile=$ReleaseNotesFile"
+      $cmdLine += " --config.releaseInfo.releaseNotesFile=`"$ReleaseNotesFile`""
       Write-Host "  release notes: $ReleaseNotesFile" -ForegroundColor DarkGray
     }
-    & "node_modules\.bin\electron-builder.cmd" @args
+    cmd /c $cmdLine
+    if ($LASTEXITCODE -ne 0) { throw "electron-builder failed with exit code $LASTEXITCODE" }
   } else {
-    & "node_modules\.bin\electron-builder.cmd" --win nsis --% -c.directories.output=release-upd
+    cmd /c "node_modules\.bin\electron-builder.cmd --win nsis -c.directories.output=release-upd"
+    if ($LASTEXITCODE -ne 0) { throw "electron-builder failed with exit code $LASTEXITCODE" }
   }
-  if ($LASTEXITCODE -ne 0) { throw "electron-builder failed with exit code $LASTEXITCODE" }
 } finally {
   Pop-Location
 }
