@@ -1,7 +1,7 @@
 {
     "name":  "dsh-desktop",
     "productName":  "DeepSeek Harness",
-    "version":  "1.0.7",
+    "version":  "1.0.8",
     "description":  "Desktop app for the DeepSeek Harness Web GUI: bundles the dsh web runtime and shows the UI in an embedded window.",
     "main":  "main.js",
     "scripts":  {
