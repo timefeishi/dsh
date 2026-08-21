@@ -91,6 +91,7 @@ if ($running.Count -gt 0) {
 
 Write-Host "==> Preparing bundled runtime (resources\dsh-runtime)" -ForegroundColor Cyan
 & powershell -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "prepare-runtime.ps1")
+if ($LASTEXITCODE -ne 0) { throw "prepare-runtime.ps1 failed with exit code $LASTEXITCODE (see error above)" }
 
 Write-Host "==> Cleaning previous build in $out" -ForegroundColor Cyan
 if (Test-Path $out) { Remove-Item $out -Recurse -Force }

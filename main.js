@@ -3,7 +3,8 @@
 // Flow on launch:
 //   1. Use the bundled runtime when packaged (resources/dsh-runtime/node.exe
 //      + full dependency tree), so machines without node/dsh/npx work out of
-//      the box. In dev (unpackaged) fall back to the npx cache.
+//      the box. In dev (unpackaged) prefer the local repo resources/dsh-runtime
+//      tree; fall back to the npx cache, then to a one-off `npx --yes`.
 //   2. If http://127.0.0.1:<port> is already answering, reuse it; otherwise
 //      spawn `node <dsh>/lib/bin.js web` (hidden console) and wait until ready.
 //   3. Show the UI in an embedded window. Closing the window hides to the
@@ -267,11 +268,32 @@ function findCachedDshBin() {
   return best;
 }
 
+// Dev: prefer the local runtime working tree produced by
+// scripts/prepare-runtime.ps1 (resources/dsh-runtime) so the dev server runs
+// the exact same runtime the installer will ship — no npx cache dependency.
+// Once built, dev launches are self-contained and unaffected by release-upd.
+function findLocalDevRuntime() {
+  if (app.isPackaged) return null;
+  const base = path.join(app.getAppPath(), "resources", "dsh-runtime");
+  const node = path.join(base, "node.exe");
+  const bin = path.join(base, "node_modules", "@deepseek-ai", "dsh", "lib", "bin.js");
+  if (fs.existsSync(node) && fs.existsSync(bin)) return { node, bin };
+  return null;
+}
+
 function resolveDshInvocation() {
-  const bundledNode = findBundledNode();
-  const bundledBin = findBundledDshBin();
-  if (bundledNode && bundledBin) {
-    return { command: bundledNode, args: [bundledBin, "web", "--port", String(PORT)] };
+  if (app.isPackaged) {
+    const bundledNode = findBundledNode();
+    const bundledBin = findBundledDshBin();
+    if (bundledNode && bundledBin) {
+      return { command: bundledNode, args: [bundledBin, "web", "--port", String(PORT)] };
+    }
+  } else {
+    // Dev runtime priority: local repo tree → npx cache → one-off `npx --yes`.
+    const local = findLocalDevRuntime();
+    if (local) {
+      return { command: local.node, args: [local.bin, "web", "--port", String(PORT)] };
+    }
   }
   const cached = findCachedDshBin();
   if (cached) {
