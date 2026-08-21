@@ -1,0 +1,14 @@
+{
+  "pages": 1,
+  "maxPrice": 5000,
+  "minScore": 0,
+  "sortBy": "score",
+  "genshinVersion": 6.8,
+  "srVersion": 4.4,
+  "decay": 3,
+  "baseFactor": 0.8,
+  "consProgression": 5,
+  "c1Factor": 0.5,
+  "zeroCons": true,
+  "includeResources": true
+}

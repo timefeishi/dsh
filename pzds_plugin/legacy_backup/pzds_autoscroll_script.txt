@@ -1,0 +1,35 @@
+// ===== 盼之列表页自动滚动加载 =====
+// 用法：在 https://www.pzds.com/goodsList/12 页面按 F12 → Console → 粘贴运行
+// 脚本会自动滚动到底部触发"加载更多"，直到没有新商品为止
+(async () => {
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  let lastCount = 0, stallRounds = 0;
+  const seen = new Set();
+  const countCards = () => {
+    document.querySelectorAll('a[href*="/goodsDetails/"]').forEach(a => {
+      const m = a.href.match(/goodsDetails\/([A-Z0-9]+)\/6/);
+      if (m) seen.add(m[1]);
+    });
+    return seen.size;
+  };
+  console.log('开始自动滚动加载...');
+  for (let round = 0; round < 200; round++) {
+    window.scrollTo(0, document.body.scrollHeight);
+    await sleep(1200);
+    const c = countCards();
+    if (c > lastCount) { lastCount = c; stallRounds = 0; console.log('已加载 ' + c + ' 个商品...'); }
+    else {
+      stallRounds++;
+      if (stallRounds >= 5) {
+        // 尝试触发"加载更多"按钮
+        const btn = [...document.querySelectorAll('button, .load-more, [class*=more], [class*=load]')].find(b => b.innerText.includes('加载') || b.innerText.includes('更多'));
+        if (btn) { btn.click(); await sleep(1500); }
+        else break;
+      }
+    }
+  }
+  window.scrollTo(0, 0);
+  const total = countCards();
+  console.log('✅ 滚动加载完成，共 ' + total + ' 个商品');
+  console.log('现在请按 Ctrl+S 保存完整页面（选“网页，全部”），然后告诉我文件保存路径');
+})();

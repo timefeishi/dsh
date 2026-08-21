@@ -1,0 +1,80 @@
+[
+  {
+    "id": "20260819160112",
+    "time": "2026/8/20 00:01:12",
+    "reportPath": "C:\\Users\\16667\\Desktop\\dsh\\dsh-desktop\\pzds_plugin\\reports\\pzds_report_20260819160112.html",
+    "count": 154,
+    "totalScore": 371899.7,
+    "totalPrice": 554453,
+    "params": {
+      "mode": "sr",
+      "pages": 2,
+      "maxPrice": 0,
+      "minPrice": 0,
+      "minScore": 0,
+      "genshinVersion": 6.8,
+      "srVersion": 4.4,
+      "decay": 5,
+      "baseFactor": 0.7,
+      "consProgression": 10,
+      "c1Factor": 0.5,
+      "zeroCons": true,
+      "includeResources": true,
+      "cdpPort": 9222,
+      "concurrency": 6,
+      "sortBy": "ratio"
+    }
+  },
+  {
+    "id": "20260819152320",
+    "time": "2026/8/19 23:23:20",
+    "reportPath": "C:\\Users\\16667\\Desktop\\dsh\\dsh-desktop\\pzds_plugin\\reports\\pzds_report_20260819152320.html",
+    "count": 729,
+    "totalScore": 839727.4,
+    "totalPrice": 2888561,
+    "params": {
+      "mode": "genshin",
+      "pages": 200,
+      "maxPrice": 1000000,
+      "minPrice": 800,
+      "minScore": 0,
+      "genshinVersion": 6.8,
+      "srVersion": 4.4,
+      "decay": 5,
+      "baseFactor": 0.7,
+      "consProgression": 10,
+      "c1Factor": 0.5,
+      "zeroCons": true,
+      "includeResources": true,
+      "cdpPort": 9222,
+      "concurrency": 6,
+      "sortBy": "ratio"
+    }
+  },
+  {
+    "id": "20260819124155",
+    "time": "2026/8/19 20:41:55",
+    "reportPath": "C:\\Users\\16667\\Desktop\\dsh\\dsh-desktop\\pzds_plugin\\reports\\pzds_report_20260819124155.html",
+    "count": 301,
+    "totalScore": 341491.7,
+    "totalPrice": 538877,
+    "params": {
+      "mode": "both",
+      "pages": 200,
+      "maxPrice": 1000000,
+      "minPrice": 400,
+      "minScore": 0,
+      "genshinVersion": 6.8,
+      "srVersion": 4.4,
+      "decay": 5,
+      "baseFactor": 0.7,
+      "consProgression": 10,
+      "c1Factor": 0.5,
+      "zeroCons": true,
+      "includeResources": true,
+      "cdpPort": 9222,
+      "concurrency": 6,
+      "sortBy": "ratio"
+    }
+  }
+]

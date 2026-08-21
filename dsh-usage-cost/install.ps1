@@ -49,10 +49,15 @@ if ($content -match "(?m)^\s*- insert:\s*$[\s\S]*dsh-usage-cost") {
   Write-Host "  wrote insert block to $profilePatch"
 }
 
-Write-Host "== 4/4 expose settings namespace via apiproxy whitelist =="
+Write-Host "== 4/4 expose settings namespace via apiproxy =="
+# dsh rc.7 removed the WEB_SETTINGS_NAMESPACES whitelist upstream (every
+# registered settings namespace is served to the Web client), so the patch is
+# only needed for runtimes <= rc.6. Skip gracefully when the pattern is gone.
 if (-not (Test-Path $apiproxyLib)) { throw "apiproxy lib not found: $apiproxyLib" }
 $raw = Get-Content $apiproxyLib -Raw
-if ($raw -match '"usage-cost"') {
+if ($raw -notmatch '"web-search-deepseek"') {
+  Write-Host "  apiproxy settings whitelist removed upstream (dsh rc.7+), no patch needed"
+} elseif ($raw -match '"usage-cost"') {
   Write-Host "  whitelist already patched"
 } else {
   $patched = [regex]::Replace(
@@ -67,5 +72,5 @@ if ($raw -match '"usage-cost"') {
 }
 
 Write-Host ""
-Write-Host "Done. Restart the Harness for the browser half + whitelist to take effect."
+Write-Host "Done. Restart the Harness for the browser half to take effect."
 Write-Host "Host half may hot-mount via the profile patch watcher (cordis.patch.yml)."

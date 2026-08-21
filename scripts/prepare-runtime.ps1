@@ -75,10 +75,16 @@ Write-Host "   baked plugin -> $pluginDst"
 # Patch the api-proxy settings whitelist inside the baked runtime so the
 # browser can read/edit the usage-cost namespace (same patch install.ps1
 # applies to a live runtime). Idempotent.
+# Since dsh rc.7 the WEB_SETTINGS_NAMESPACES whitelist was REMOVED upstream
+# (every registered settings namespace is served to the Web client), so the
+# patch is a no-op there: skip gracefully instead of failing the build.
+# Older runtimes (<= rc.6) still get the whitelist patch.
 $apiproxy = Join-Path $dst "node_modules\@deepseek-ai\dsh-host-apiproxy\lib\index.js"
 if (Test-Path $apiproxy) {
   $raw = Get-Content $apiproxy -Raw
-  if ($raw -notmatch '"usage-cost"') {
+  if ($raw -notmatch '"web-search-deepseek"') {
+    Write-Host "   apiproxy settings whitelist removed upstream (dsh rc.7+), no patch needed"
+  } elseif ($raw -notmatch '"usage-cost"') {
     $patched = [regex]::Replace(
       $raw,
       '"web-search-deepseek"(\r?\n)[ \t]*\]',

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "20260816161843",
+    "time": "2026/8/17 00:18:43",
+    "reportPath": "C:\\Users\\16667\\Desktop\\dsh\\dsh-desktop\\pzds_reports\\pzds_report_20260816161843.html",
+    "count": 29,
+    "totalScore": 12408.5,
+    "totalPrice": 52699,
+    "params": {
+      "pages": 2,
+      "maxPrice": 5000,
+      "minPrice": 1000,
+      "minScore": 0,
+      "genshinVersion": 6.8,
+      "srVersion": 4.4,
+      "decay": 3,
+      "baseFactor": 0.8,
+      "consProgression": 5,
+      "c1Factor": 0.5,
+      "zeroCons": true,
+      "includeResources": true,
+      "cdpPort": 9222,
+      "sortBy": "score"
+    }
+  },
+  {
+    "id": "20260816160918",
+    "time": "2026/8/17 00:09:18",
+    "reportPath": "C:\\Users\\16667\\Desktop\\dsh\\dsh-desktop\\pzds_reports\\pzds_report_20260816160918.html",
+    "count": 27,
+    "totalScore": 12012.7,
+    "totalPrice": 47941,
+    "params": {
+      "pages": 2,
+      "maxPrice": 5000,
+      "minPrice": 1000,
+      "minScore": 0,
+      "genshinVersion": 6.8,
+      "srVersion": 4.4,
+      "decay": 3,
+      "baseFactor": 0.8,
+      "consProgression": 5,
+      "c1Factor": 0.5,
+      "zeroCons": true,
+      "includeResources": true,
+      "cdpPort": 9222,
+      "sortBy": "score"
+    }
+  },
+  {
+    "id": "20260816154821",
+    "time": "2026/8/16 23:48:21",
+    "reportPath": "C:\\Users\\16667\\Desktop\\dsh\\dsh-desktop\\pzds_reports\\pzds_report_20260816154821.html",
+    "count": 3,
+    "totalScore": 2576.8,
+    "totalPrice": 2399,
+    "params": {
+      "pages": 2,
+      "maxPrice": 0,
+      "minPrice": 0,
+      "minScore": 0,
+      "genshinVersion": 6.8,
+      "srVersion": 4.4,
+      "decay": 3,
+      "baseFactor": 0.8,
+      "consProgression": 5,
+      "c1Factor": 0.5,
+      "zeroCons": true,
+      "includeResources": true,
+      "cdpPort": 9222,
+      "sortBy": "score"
+    }
+  },
+  {
+    "id": "20260816154339",
+    "time": "2026/8/16 23:43:39",
+    "reportPath": "C:\\Users\\16667\\Desktop\\dsh\\dsh-desktop\\pzds_reports\\pzds_report_20260816154339.html",
+    "count": 1,
+    "totalScore": 20.2,
+    "totalPrice": 430,
+    "params": {
+      "pages": 2,
+      "maxPrice": 0,
+      "minPrice": 0,
+      "minScore": 0,
+      "genshinVersion": 6.8,
+      "srVersion": 4.4,
+      "decay": 3,
+      "baseFactor": 0.8,
+      "consProgression": 5,
+      "c1Factor": 0.5,
+      "zeroCons": true,
+      "includeResources": true,
+      "cdpPort": 9222,
+      "sortBy": "score"
+    }
+  },
+  {
+    "id": "20260816154142",
+    "time": "2026/8/16 23:41:42",
+    "reportPath": "C:\\Users\\16667\\Desktop\\dsh\\dsh-desktop\\pzds_reports\\pzds_report_20260816154142.html",
+    "count": 1,
+    "totalScore": 1220.8,
+    "totalPrice": 0,
+    "params": {
+      "pages": 2,
+      "maxPrice": 0,
+      "minPrice": 0,
+      "minScore": 0,
+      "genshinVersion": 6.8,
+      "srVersion": 4.4,
+      "decay": 3,
+      "baseFactor": 0.8,
+      "consProgression": 5,
+      "c1Factor": 0.5,
+      "zeroCons": true,
+      "includeResources": true,
+      "cdpPort": 9222,
+      "sortBy": "score"
+    }
+  }
+]

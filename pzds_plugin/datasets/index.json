@@ -1,0 +1,44 @@
+[
+  {
+    "id": "20260819152320",
+    "time": "2026/08/19 15:23",
+    "mode": "genshin",
+    "count": 729,
+    "reportFile": "datasets/20260819152320/report.html",
+    "updatedAt": 1787157696424,
+    "note": "从报告提取（仅原神，23:23）",
+    "lastResult": {
+      "count": 729,
+      "totalScore": 670321.4,
+      "totalPrice": 2888561
+    }
+  },
+  {
+    "id": "20260819124155",
+    "time": "2026/08/19 12:41",
+    "mode": "both",
+    "count": 301,
+    "reportFile": "datasets/20260819124155/report.html",
+    "updatedAt": 1787157696296,
+    "note": "从报告提取（原神+崩铁连体，20:41）",
+    "lastResult": {
+      "count": 267,
+      "totalScore": 331518.4,
+      "totalPrice": 498838
+    }
+  },
+  {
+    "id": "20260819161350",
+    "time": "2026/8/20 00:13:50",
+    "mode": "sr",
+    "count": 180,
+    "reportFile": "datasets/20260819161350/report.html",
+    "updatedAt": 1787157745297,
+    "note": "迁移自旧 details.json",
+    "lastResult": {
+      "count": 154,
+      "totalScore": 371899.7,
+      "totalPrice": 554453
+    }
+  }
+]

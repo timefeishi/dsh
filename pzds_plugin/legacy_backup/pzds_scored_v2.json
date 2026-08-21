@@ -1,0 +1,4900 @@
+[
+ {
+  "goodsNo": "N9VYE",
+  "title": "冒险等阶 60，181黄，43个金色英雄，42把金色武器，2676个原石，1429个创世结晶，满命琴,满命七七,满命雷电将军,满命提纳里,满命芙宁娜,满命夜兰,满命莫娜,满命迪卢克，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 7899,
+  "chars": [
+   {
+    "name": "芙宁娜",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 6,
+    "base": 8.5,
+    "value": 59.5
+   },
+   {
+    "name": "夜兰",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 182,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NCNFA",
+  "title": "冒险等阶 60，170黄，35个金色英雄，42把金色武器，1580个原石，8个纠缠之缘，355个创世结晶，满命魈,满命千织,满命丝柯克,满命芙宁娜,满命七七,满命八重神子,满命纳西妲,满命夜兰,满命莫娜,满命迪卢克，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 3600,
+  "chars": [
+   {
+    "name": "芙宁娜",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   },
+   {
+    "name": "八重神子",
+    "constellation": 6,
+    "base": 8.5,
+    "value": 59.5
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   },
+   {
+    "name": "夜兰",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   },
+   {
+    "name": "千织",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 357,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NGWVY",
+  "title": "冒险等阶 60，167黄，53个金色英雄，48把金色武器，588个原石，满命魈,满命刻晴,满命迪卢克,满命迪希雅，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 4200,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NAN9W",
+  "title": "冒险等阶 60，165黄，40个金色英雄，40把金色武器，463个原石，900个创世结晶，满命夜兰,满命神里绫华,满命那维莱特,满命琴,满命刻晴，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 4799,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   },
+   {
+    "name": "夜兰",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 178.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "PGHFJXN",
+  "title": "冒险等阶 60，156黄，38个金色英雄，33把金色武器，19个原石，满命恰斯卡,满命优菈,满命克洛琳德,满命那维莱特,满命夜兰,满命阿蕾奇诺,满命迪希雅,满命刻晴，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 4500,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   },
+   {
+    "name": "克洛琳德",
+    "constellation": 6,
+    "base": 8.5,
+    "value": 59.5
+   },
+   {
+    "name": "恰斯卡",
+    "constellation": 6,
+    "base": 8.5,
+    "value": 59.5
+   },
+   {
+    "name": "夜兰",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 304.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NE2VJ",
+  "title": "冒险等阶 60，149黄，51个金色英雄，62把金色武器，1252个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 3000,
+  "chars": [
+   {
+    "name": "胡桃",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "申鹤",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "尼可",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "伊涅芙",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "爱可菲",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "兹白",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "玛拉妮",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "瓦雷莎",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "八重神子",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "艾尔海森",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "妮露",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫人",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "千织",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "基尼奇",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "白术",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 290,
+  "dataSource": "detail"
+ },
+ {
+  "goodsNo": "NBW5X",
+  "title": "冒险等阶 57，146黄，26个金色英雄，26把金色武器，1494个原石，3个纠缠之缘，6061个创世结晶，满命钟离,满命达达利亚,满命夜兰,满命阿贝多,满命温迪,满命琴,满命莫娜,满命可莉,满命迪卢克,满命七七",
+  "price": 1560,
+  "chars": [
+   {
+    "name": "阿贝多",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   },
+   {
+    "name": "钟离",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   },
+   {
+    "name": "夜兰",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 168,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NCDWR",
+  "title": "冒险等阶 60，136黄，39个金色英雄，37把金色武器，93个原石，32个纠缠之缘，满命芙宁娜,满命克洛琳德,满命莫娜，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1500,
+  "chars": [
+   {
+    "name": "芙宁娜",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "克洛琳德",
+    "constellation": 6,
+    "base": 8.5,
+    "value": 59.5
+   }
+  ],
+  "score": 126,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NASPN",
+  "title": "冒险等阶 60，134黄，35个金色英雄，26把金色武器，5个纠缠之缘，1394个原石，其他角色武器详情看图.",
+  "price": 4500,
+  "chars": [
+   {
+    "name": "芙宁娜",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   }
+  ],
+  "score": 56.5,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "N7RBJ",
+  "title": "冒险等阶 60，130黄，52个金色英雄，20把金色武器，1132个原石，58个纠缠之缘，600个创世结晶，满命莫娜,满命七七,满命迪希雅，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1800,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "ND99P",
+  "title": "冒险等阶 60，128黄，48个金色英雄，35把金色武器，4196个原石，满命夜兰,满命莫娜,满命琴，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2333,
+  "chars": [
+   {
+    "name": "夜兰",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 56,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NF6XX",
+  "title": "冒险等阶 60，119黄，41个金色英雄，35把金色武器，17500个原石，99个创世结晶，满命夜兰,满命提纳里,满命七七，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1799,
+  "chars": [
+   {
+    "name": "夜兰",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 56,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N2YNZ",
+  "title": "冒险等阶 60，118黄，29个金色英雄，25把金色武器，3920个原石，14个创世结晶，满命杜林,满命玛薇卡,满命迪卢克，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 3999,
+  "chars": [
+   {
+    "name": "玛薇卡",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "杜林",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   }
+  ],
+  "score": 129.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NBEQ8",
+  "title": "冒险等阶 60，116黄，38个金色英雄，30把金色武器，4301个原石，1个纠缠之缘，30个创世结晶，满命刻晴,满命胡桃，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1699,
+  "chars": [
+   {
+    "name": "胡桃",
+    "constellation": 6,
+    "base": 8.5,
+    "value": 59.5
+   }
+  ],
+  "score": 59.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N6X7J",
+  "title": "冒险等阶 60，114黄，38127个原石，0个纠缠之缘，2100个创世结晶，37个金色英雄，26把金色武器，满命丝柯克,满命莫娜,满命阿蕾奇诺",
+  "price": 2000,
+  "chars": [
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   }
+  ],
+  "score": 126,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N43SE",
+  "title": "原神星铁连体号都有三百抽和马上出的大保底 冒险等阶 60，111黄，481个原石，260个纠缠之缘，11个创世结晶，35个金色英雄，20把金色武器，满命琴,满命兹白,满命芙宁娜,满命玛薇卡",
+  "price": 6650,
+  "chars": [
+   {
+    "name": "玛薇卡",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "兹白",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   }
+  ],
+  "score": 196,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N9RUN",
+  "title": "冒险等阶 60，109黄，38个金色英雄，32把金色武器，2856个原石，842个创世结晶，满命阿蕾奇诺,满命琴,满命提纳里，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1343,
+  "chars": [
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   }
+  ],
+  "score": 63,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N9GD0",
+  "title": "冒险等阶 60，106黄，37个金色英雄，25把金色武器，202个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1500,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 2,
+    "base": 9,
+    "value": 27
+   },
+   {
+    "name": "申鹤",
+    "constellation": 2,
+    "base": 8,
+    "value": 24
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 2,
+    "base": 8,
+    "value": 24
+   },
+   {
+    "name": "恰斯卡",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "法尔伽",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "爱可菲",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "菈乌玛",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "玛拉妮",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "克洛琳德",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "八重神子",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "艾尔海森",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "妮露",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "阿贝多",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "奈芙尔",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 257,
+  "dataSource": "detail"
+ },
+ {
+  "goodsNo": "N99B2",
+  "title": "冒险等阶 60，104黄，36个金色英雄，27把金色武器，1757个原石，1489个创世结晶，满命夜兰,满命迪卢克，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1800,
+  "chars": [
+   {
+    "name": "夜兰",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 56,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NHUUD",
+  "title": "冒险等阶 60，102黄，35个金色英雄，27把金色武器，74个原石，满命雷电将军,满命莫娜,满命七七，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2666,
+  "chars": [
+   {
+    "name": "雷电将军",
+    "constellation": 6,
+    "base": 8.5,
+    "value": 59.5
+   }
+  ],
+  "score": 59.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NAWEJ",
+  "title": "冒险等阶 60，99黄，39个金色英雄，18把金色武器，4384个原石，671个创世结晶，满命丝柯克,满命琴",
+  "price": 1688,
+  "chars": [
+   {
+    "name": "丝柯克",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   }
+  ],
+  "score": 63,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N92TN",
+  "title": "冒险等阶 60，98黄，39个金色英雄，19把金色武器，661个原石，150个创世结晶，满命莫娜，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1170,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N7SQE",
+  "title": "冒险等阶60，97黄，34金角色，30金色武器，1475个原石，5个纠缠之缘，满命刻晴，其他角色武器详情看图.，【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2000,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N8KCB",
+  "title": "冒险等阶60，96黄，38金角色，23金色武器，1387个原石，满命迪卢克，其他角色武器详情看图.，【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1499,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NF9T9",
+  "title": "冒险等阶 60，96黄，25个金色英雄，24把金色武器，97个原石，51个纠缠之缘，满命玛薇卡,满命提纳里",
+  "price": 1500,
+  "chars": [
+   {
+    "name": "玛薇卡",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   }
+  ],
+  "score": 66.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NHA8E",
+  "title": "冒险等阶 60，95黄，29个金色英雄，20把金色武器，376个原石，满命提纳里,满命那维莱特",
+  "price": 3743,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   }
+  ],
+  "score": 66.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NEAEL",
+  "title": "冒险等阶 60，95黄，33个金色英雄，26把金色武器，1942个原石，满命玛薇卡",
+  "price": 2500,
+  "chars": [
+   {
+    "name": "玛薇卡",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   }
+  ],
+  "score": 66.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N4BZG",
+  "title": "冒险等阶 1，94黄，26个金色英雄，23把金色武器，281个原石，满命钟离,满命夜兰，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 7800,
+  "chars": [
+   {
+    "name": "钟离",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   },
+   {
+    "name": "夜兰",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 112,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NFV8Z",
+  "title": "冒险等阶 60，94黄，42个金色英雄，21把金色武器，108个原石，22个纠缠之缘，满命莫娜",
+  "price": 1600,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NDF7Y",
+  "title": "冒险等阶 60，94黄，38个金色英雄，20把金色武器，1306个原石，260个创世结晶，满命七七，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1054,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NFW3Z",
+  "title": "冒险等阶 60，93黄，33个金色英雄，24把金色武器，1563个原石，300个创世结晶，满命八重神子",
+  "price": 3750,
+  "chars": [
+   {
+    "name": "八重神子",
+    "constellation": 6,
+    "base": 8.5,
+    "value": 59.5
+   }
+  ],
+  "score": 59.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N53HR",
+  "title": "冒险等阶 60，92黄，32个金色英雄，18把金色武器，472个原石，31个纠缠之缘，1个创世结晶，满命夜兰,满命七七,满命提纳里",
+  "price": 1688,
+  "chars": [
+   {
+    "name": "夜兰",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 56,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N2VWZ",
+  "title": "米游三家原铁绝一起出，都是精品号 冒险等阶 60，92黄，31个金色英雄，23把金色武器，1220个原石，1个纠缠之缘，满命那维莱特,满命阿蕾奇诺,满命迪卢克",
+  "price": 1900,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   }
+  ],
+  "score": 129.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N1KV9",
+  "title": "冒险等阶60，90黄，41金角色，20金色武器，259个原石，满命枫原万叶，其他角色武器详情看图.，【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1090,
+  "chars": [
+   {
+    "name": "枫原万叶",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 56,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N6SB1",
+  "title": "冒险等阶 60，88黄，36个金色英雄，17把金色武器，571个原石，满命七七，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1000,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N274Q",
+  "title": "冒险等阶60，85黄，25金角色，18金色武器，4192个原石，67个纠缠之缘，满命那维莱特,满命提纳里，其他角色武器详情看图.，【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2019,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   }
+  ],
+  "score": 66.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NGLXH",
+  "title": "带价来，号上资源较多，没怎么肝过 冒险等阶 60，84黄，33个金色英雄，19把金色武器，1385个原石，35个创世结晶，满命阿蕾奇诺,满命七七，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1087,
+  "chars": [
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   }
+  ],
+  "score": 63,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NHVX8",
+  "title": "冒险等阶 60，84黄，32个金色英雄，25把金色武器，77个原石，满命赛诺,满命琴",
+  "price": 1134,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NFH7B",
+  "title": "冒险等阶 1，84黄，36个金色英雄，23把金色武器，114个原石，2250个创世结晶，满命莫娜，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1069,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N6TKJ",
+  "title": "冒险等阶 60，83黄，29个金色英雄，25把金色武器，120个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1850,
+  "chars": [
+   {
+    "name": "丝柯克",
+    "constellation": 2,
+    "base": 9,
+    "value": 27
+   },
+   {
+    "name": "爱可菲",
+    "constellation": 1,
+    "base": 9,
+    "value": 18
+   },
+   {
+    "name": "莉奈娅",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "钟离",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "杜林",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "伊涅芙",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "恰斯卡",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "洛恩",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 166.5,
+  "dataSource": "detail"
+ },
+ {
+  "goodsNo": "N9VFB",
+  "title": "冒险等阶 60，83黄，24个金色英雄，14把金色武器，88个原石，55个创世结晶，满命八重神子,满命神里绫华,满命琴,满命刻晴,满命莫娜",
+  "price": 1288,
+  "chars": [
+   {
+    "name": "八重神子",
+    "constellation": 6,
+    "base": 8.5,
+    "value": 59.5
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 115.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NET6D",
+  "title": "捆绑一个不错的崩铁号打包出 冒险等阶 60，82黄，36个金色英雄，18把金色武器，220个原石，1个纠缠之缘，300个创世结晶，满命莫娜，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1159,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N67TZ",
+  "title": "冒险等阶 60，82黄，43个金色英雄，16把金色武器，60个原石，11个创世结晶，满命七七",
+  "price": 1400,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N90YM",
+  "title": "冒险等阶 60，80黄，27个金色英雄，20把金色武器，50个原石，183个创世结晶，满命丝柯克",
+  "price": 1299,
+  "chars": [
+   {
+    "name": "丝柯克",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   }
+  ],
+  "score": 63,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N5W7G",
+  "title": "冒险等阶 60，80黄，27个金色英雄，12把金色武器，159个原石，6个创世结晶，满命枫原万叶,满命刻晴",
+  "price": 1000,
+  "chars": [
+   {
+    "name": "枫原万叶",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 56,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N2Q6B",
+  "title": "冒险等阶60，77黄，32金角色，13金色武器，8个原石，满命那维莱特，其他角色武器详情看图.，【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1421,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   }
+  ],
+  "score": 66.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N2HSD",
+  "title": "冒险等阶 60，77黄，36个金色英雄，15把金色武器，8235个原石，10个纠缠之缘，1个创世结晶，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1088,
+  "chars": [
+   {
+    "name": "玛薇卡",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "胡桃",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "八重神子",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "妮露",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "申鹤",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "尼可",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "爱可菲",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "兹白",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "菈乌玛",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "瓦雷莎",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "莉奈娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 314.5,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NDS8Z",
+  "title": "冒险等阶 60，76黄，32个金色英雄，20把金色武器，242个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1046,
+  "chars": [
+   {
+    "name": "哥伦比娅",
+    "constellation": 5,
+    "base": 9,
+    "value": 54
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "钟离",
+    "constellation": 2,
+    "base": 8,
+    "value": 24
+   },
+   {
+    "name": "胡桃",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "兹白",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "八重神子",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "克洛琳德",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "莱欧斯利",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫人",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "千织",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 260.5,
+  "dataSource": "detail"
+ },
+ {
+  "goodsNo": "N6N5B",
+  "title": "冒险等阶 60，76黄，32个金色英雄，17把金色武器，848个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1440,
+  "chars": [
+   {
+    "name": "茜特菈莉",
+    "constellation": 2,
+    "base": 9,
+    "value": 27
+   },
+   {
+    "name": "胡桃",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "菲林斯",
+    "constellation": 1,
+    "base": 9,
+    "value": 18
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "夜兰",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "申鹤",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "尼可",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "伊涅芙",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "爱可菲",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "克洛琳德",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "妮露",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 285,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NHN1N",
+  "title": "【原神地图资源丰富尚有410多抽纠缠，up武器池均差15发左右小保底。存有25个祝圣之霜，13根重塑羽毛，主要四星五星均为顶级练度，极品圣遗物以及胚子很多。崩铁20抽小保底，尚有90多抽，瑕蝶白厄均2➕1极品练度，关键命座配队齐全，挂机0t异象，有钻石头像框，另有四颗重塑骰子，肯德基联动绝版帕姆头像及名片】  冒险等阶 60，76黄，21个金色英雄，21把金色武器，375个纠缠之缘，146个原石，其他角色武器详情看图.",
+  "price": 1700,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N3FSU",
+  "title": "冒险等阶 60，75黄，34个金色英雄，11把金色武器，221个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1347,
+  "chars": [
+   {
+    "name": "八重神子",
+    "constellation": 4,
+    "base": 8.5,
+    "value": 42.5
+   },
+   {
+    "name": "兹白",
+    "constellation": 2,
+    "base": 9,
+    "value": 27
+   },
+   {
+    "name": "妮露",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "法尔伽",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "菲林斯",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "伊涅芙",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "菈乌玛",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "恰斯卡",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "艾尔海森",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫人",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 232,
+  "dataSource": "detail"
+ },
+ {
+  "goodsNo": "N4W32",
+  "title": "冒险等阶 60，75黄，34个金色英雄，18把金色武器，415个原石，25个创世结晶，满命魈,满命七七",
+  "price": 1000,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N165P",
+  "title": "冒险等阶 60，75黄，32个金色英雄，22把金色武器，42个原石，满命莫娜",
+  "price": 1758,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NAU1R",
+  "title": "冒险等阶 60，75黄，29个金色英雄，12把金色武器，140个原石",
+  "price": 1519,
+  "chars": [
+   {
+    "name": "雷电将军",
+    "constellation": 5,
+    "base": 8.5,
+    "value": 51
+   },
+   {
+    "name": "恰斯卡",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "胡桃",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "玛薇卡",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 1,
+    "base": 9,
+    "value": 18
+   },
+   {
+    "name": "艾尔海森",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "桑多涅",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "莉奈娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 276.5,
+  "dataSource": "detail"
+ },
+ {
+  "goodsNo": "N0MYN",
+  "title": "冒险等阶 60，74黄，33个金色英雄，22把金色武器，526个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1200,
+  "chars": [
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "八重神子",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫人",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "申鹤",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "阿贝多",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 144,
+  "dataSource": "detail"
+ },
+ {
+  "goodsNo": "NBU3G",
+  "title": "冒险等阶 60，74黄，30个金色英雄，18把金色武器，68个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1088,
+  "chars": [
+   {
+    "name": "玛薇卡",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 2,
+    "base": 8,
+    "value": 24
+   },
+   {
+    "name": "胡桃",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "夜兰",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "恰斯卡",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "艾尔海森",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "申鹤",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 252.5,
+  "dataSource": "detail"
+ },
+ {
+  "goodsNo": "NGTUV",
+  "title": "冒险等阶 60，73黄，32个金色英雄，16把金色武器，85个原石，643个创世结晶，满命七七,满命莫娜，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1500,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N1HMJ",
+  "title": "冒险等阶 60，72黄，31个金色英雄，14把金色武器，140个原石，满命刻晴",
+  "price": 1800,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N92VP",
+  "title": "冒险等阶 60，71黄，30个金色英雄，19把金色武器，105个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1268,
+  "chars": [
+   {
+    "name": "雷电将军",
+    "constellation": 3,
+    "base": 8.5,
+    "value": 34
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 2,
+    "base": 8,
+    "value": 24
+   },
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "法尔伽",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "恰斯卡",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "瓦雷莎",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "艾尔海森",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "白术",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 170,
+  "dataSource": "detail"
+ },
+ {
+  "goodsNo": "N20TZ",
+  "title": "冒险等阶 60，71黄，34个金色英雄，11把金色武器，320个原石，41个纠缠之缘，满命琴",
+  "price": 1620,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N286T",
+  "title": "千星女偶衣服挺多的 冒险等阶60，70黄，28金角色，15金色武器，763个原石，满命刻晴，其他角色武器详情看图.，【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2000,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NF4X6",
+  "title": "冒险等阶 57，68黄，26个金色英雄，16把金色武器，0个纠缠之缘，618个原石，其他角色武器详情看图.",
+  "price": 2550,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NF1CV",
+  "title": "冒险等阶 60，65黄，27个金色英雄，20把金色武器，183个原石",
+  "price": 1200,
+  "chars": [
+   {
+    "name": "雷电将军",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "夜兰",
+    "constellation": 2,
+    "base": 8,
+    "value": 24
+   },
+   {
+    "name": "胡桃",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "桑多涅",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "玛拉妮",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "瓦雷莎",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫人",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "申鹤",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 167,
+  "dataSource": "detail"
+ },
+ {
+  "goodsNo": "N2C78",
+  "title": "冒险等阶 60，64黄，25个金色英雄，18把金色武器，25个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1388,
+  "chars": [
+   {
+    "name": "芙宁娜",
+    "constellation": 3,
+    "base": 9.5,
+    "value": 38
+   },
+   {
+    "name": "胡桃",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "夜兰",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "八重神子",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "奈芙尔",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 165.5,
+  "dataSource": "detail"
+ },
+ {
+  "goodsNo": "NHYBN",
+  "title": "冒险等阶60，63黄，33金角色，14金色武器，26014个原石，其他角色武器详情看图.，【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2999,
+  "chars": [
+   {
+    "name": "兹白",
+    "constellation": 2,
+    "base": 9,
+    "value": 27
+   },
+   {
+    "name": "胡桃",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "八重神子",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "夜兰",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "申鹤",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "伊涅芙",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "爱可菲",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "菈乌玛",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "奈芙尔",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "白术",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 249,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "NC3XF",
+  "title": "冒险等阶 50，63黄，11个金色英雄，14把金色武器，其他角色武器详情看图.",
+  "price": 6500,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N6T85",
+  "title": "冒险等阶60，62黄，33金角色，13金色武器，73个原石，9个纠缠之缘，其他角色武器详情看图.，【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 5000,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "莱欧斯利",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "申鹤",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "菲林斯",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "爱可菲",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "恰斯卡",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "克洛琳德",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "妮露",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "千织",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "基尼奇",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 206,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "N6GZU",
+  "title": "冒险等阶 60，62黄，22个金色英雄，17把金色武器，23个原石，8个创世结晶，满命夜兰，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 6669,
+  "chars": [
+   {
+    "name": "夜兰",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 56,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N9DMA",
+  "title": "冒险等阶 60，62黄，264个原石，399个纠缠之缘，4350个创世结晶，19个金色英雄，16把金色武器，满命迪希雅，3命提纳里,2命芙宁娜,2命玛薇卡,2命兹白,2命恰斯卡，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2688,
+  "chars": [
+   {
+    "name": "玛薇卡",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "兹白",
+    "constellation": 2,
+    "base": 9,
+    "value": 27
+   },
+   {
+    "name": "恰斯卡",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   }
+  ],
+  "score": 109.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NBL4C",
+  "title": "冒险等阶 59，62黄，25个金色英雄，17把金色武器，39个原石，6个纠缠之缘，6个创世结晶，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1170,
+  "chars": [
+   {
+    "name": "芙宁娜",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 2,
+    "base": 8,
+    "value": 24
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "钟离",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "兹白",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "菈乌玛",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "恰斯卡",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "妮露",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "白术",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 198.5,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "N9S4S",
+  "title": "冒险等阶 60，62黄，16828个原石，521个纠缠之缘，0个创世结晶，24个金色英雄，14把金色武器，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2200,
+  "chars": [
+   {
+    "name": "胡桃",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 1,
+    "base": 9,
+    "value": 18
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "夜兰",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "白术",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "神里绫人",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 177.5,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "N6UXU",
+  "title": "冒险等阶 60，61黄，43601个原石，11个纠缠之缘，2311个创世结晶，27个金色英雄，14把金色武器",
+  "price": 1888,
+  "chars": [
+   {
+    "name": "丝柯克",
+    "constellation": 2,
+    "base": 9,
+    "value": 27
+   },
+   {
+    "name": "胡桃",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "八重神子",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "申鹤",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "尼可",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "爱可菲",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "兹白",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "菈乌玛",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "克洛琳德",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "莉奈娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "奈芙尔",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 207.5,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "ND96D",
+  "title": "冒险等阶 60，61黄，24个金色英雄，13把金色武器，74个原石，109个创世结晶，满命枫原万叶，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1305,
+  "chars": [
+   {
+    "name": "枫原万叶",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 56,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N6W9Q",
+  "title": "冒险等阶 60，60黄，24个金色英雄，10把金色武器，68个原石，其他角色武器详情看图.",
+  "price": 2088,
+  "chars": [
+   {
+    "name": "芙宁娜",
+    "constellation": 3,
+    "base": 9.5,
+    "value": 38
+   }
+  ],
+  "score": 38,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "NA6JG",
+  "title": "冒险等阶 60，60黄，35个金色英雄，7把金色武器，1个纠缠之缘，172个原石，其他角色武器详情看图.",
+  "price": 1399,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N2LYC",
+  "title": "冒险等阶60，60黄，25金角色，10金色武器，1662个原石，4个纠缠之缘，0命哥伦比娅,0命芙宁娜,2命玛薇卡,0命茜特菈莉,1命那维莱特,0命伊涅芙,0命钟离,0命枫原万叶,1命阿蕾奇诺,2命雷电将军，其他角色武器详情看图.，【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 3599,
+  "chars": [
+   {
+    "name": "玛薇卡",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 1,
+    "base": 9,
+    "value": 18
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "伊涅芙",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 143.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NA0YF",
+  "title": "冒险等阶 60，56黄，26个金色英雄，13把金色武器，10678个原石，1350个创世结晶，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2000,
+  "chars": [
+   {
+    "name": "神里绫华",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "兹白",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "莉奈娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 128.5,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "NHNCF",
+  "title": "冒险等阶 60，56黄，28个金色英雄，11把金色武器，385个原石，300个创世结晶，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1099,
+  "chars": [
+   {
+    "name": "芙宁娜",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "克洛琳德",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "爱可菲",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "八重神子",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "妮露",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "白术",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 191.5,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "NDVWE",
+  "title": "冒险等阶 60，55黄，25个金色英雄，17把金色武器，75个原石，21个创世结晶",
+  "price": 1699,
+  "chars": [
+   {
+    "name": "芙宁娜",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "菲林斯",
+    "constellation": 1,
+    "base": 9,
+    "value": 18
+   },
+   {
+    "name": "妮露",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "伊涅芙",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "爱可菲",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "兹白",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "恰斯卡",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "莉奈娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 158,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "NDU2E",
+  "title": "冒险等阶 59，55黄，22个金色英雄，19把金色武器，3291个原石",
+  "price": 3096,
+  "chars": [
+   {
+    "name": "雷电将军",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "夜兰",
+    "constellation": 2,
+    "base": 8,
+    "value": 24
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 2,
+    "base": 8,
+    "value": 24
+   },
+   {
+    "name": "胡桃",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "艾尔海森",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "妮露",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "申鹤",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 156.5,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "N1H5Z",
+  "title": "冒险等阶 60，54黄，28个金色英雄，13把金色武器，62个原石，满命七七，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1000,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N5V9B",
+  "title": "冒险等阶 60，54黄，24个金色英雄，12把金色武器，1071个原石，满命枫原万叶",
+  "price": 1134,
+  "chars": [
+   {
+    "name": "枫原万叶",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   }
+  ],
+  "score": 56,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N2HZ8",
+  "title": "冒险等阶 59，53黄，24个金色英雄，14把金色武器，125个原石",
+  "price": 1028,
+  "chars": [
+   {
+    "name": "雷电将军",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "钟离",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "胡桃",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "玛拉妮",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "妮露",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫人",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "申鹤",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 139,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "N8H2A",
+  "title": "冒险等阶 60，52黄，29个金色英雄，12把金色武器，16个原石，其他角色武器详情看图.",
+  "price": 1000,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NFANG",
+  "title": "冒险等阶 60，52黄，21个金色英雄，17把金色武器，24个原石",
+  "price": 1388,
+  "chars": [
+   {
+    "name": "恰斯卡",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "玛薇卡",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 1,
+    "base": 9,
+    "value": 18
+   },
+   {
+    "name": "莱欧斯利",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 140,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "N85TJ",
+  "title": "冒险等阶 60，49黄，17个金色英雄，10把金色武器，32个原石，满命菲林斯,满命莱欧斯利，0命法尔伽,0命哥伦比娅,0命芙宁娜,0命希诺宁,0命伊涅芙，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 4500,
+  "chars": [
+   {
+    "name": "菲林斯",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   },
+   {
+    "name": "莱欧斯利",
+    "constellation": 6,
+    "base": 8.5,
+    "value": 59.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "伊涅芙",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "法尔伽",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   }
+  ],
+  "score": 168,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NC9R3",
+  "title": "连体成品崩铁号，三路深渊和异象仲裁能满星 冒险等阶 60，48黄，52356个原石，37个纠缠之缘，600个创世结晶，18个金色英雄，11把金色武器，满命那维莱特，3命芙宁娜,2命迪卢克,2命迪希雅,2命七七,1命茜特菈莉，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2183,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 3,
+    "base": 9.5,
+    "value": 38
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 1,
+    "base": 9,
+    "value": 18
+   }
+  ],
+  "score": 122.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N6BTM",
+  "title": "冒险等阶 57，48黄，14个金色英雄，8把金色武器，1491个原石，21个纠缠之缘，303个创世结晶，满命菲林斯,满命奈芙尔，4命莫娜,2命哥伦比娅,2命菈乌玛,2命迪卢克,1命提纳里",
+  "price": 2999,
+  "chars": [
+   {
+    "name": "菲林斯",
+    "constellation": 6,
+    "base": 9,
+    "value": 63
+   },
+   {
+    "name": "奈芙尔",
+    "constellation": 6,
+    "base": 8,
+    "value": 56
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 2,
+    "base": 9,
+    "value": 27
+   },
+   {
+    "name": "菈乌玛",
+    "constellation": 2,
+    "base": 9,
+    "value": 27
+   }
+  ],
+  "score": 173,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NBCJB",
+  "title": "冒险等阶 60，46黄，20个金色英雄，11把金色武器，40个原石，其他角色武器详情看图.",
+  "price": 1800,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NGG9V",
+  "title": "冒险等阶 59，46黄，21个金色英雄，9把金色武器，118个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1053,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 4,
+    "base": 9.5,
+    "value": 47.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "胡桃",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "艾尔海森",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "申鹤",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 123,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "NCWBR",
+  "title": "冒险等阶 60，46黄，49227个原石，0个纠缠之缘，300个创世结晶，28个金色英雄，12把金色武器",
+  "price": 3333,
+  "chars": [
+   {
+    "name": "妮露",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "胡桃",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "八重神子",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "申鹤",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "千织",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 133,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "NBE7W",
+  "title": "冒险等阶60，45黄，20金角色，9金色武器，满命芙宁娜，0命哥伦比娅,0命丝柯克,0命希诺宁,0命那维莱特,0命奈芙尔,0命杜林,0命流浪者,1命魈,0命娜维娅,0命闲云，其他角色武器详情看图.，【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2095,
+  "chars": [
+   {
+    "name": "芙宁娜",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "杜林",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "娜维娅",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "奈芙尔",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 128.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NA525",
+  "title": "600多抽，还有10抽直接大保底 冒险等阶 60，45黄，18个金色英雄，8把金色武器，2709个原石，3命那维莱特,3命莫娜,2命雷电将军,2命提纳里,2命迪卢克，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 6750,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 3,
+    "base": 9.5,
+    "value": 38
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   }
+  ],
+  "score": 63.5,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NCGY3",
+  "title": "冒险等阶 60，42黄，21个金色英雄，10把金色武器，17个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1200,
+  "chars": [
+   {
+    "name": "雷电将军",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "尼可",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "胡桃",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "玛拉妮",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "妮露",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "申鹤",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 125.5,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N0MR3",
+  "title": "冒险等阶 59，41黄，26个金色英雄，4把金色武器，58个原石，2个纠缠之缘，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2680,
+  "chars": [
+   {
+    "name": "胡桃",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "法尔伽",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "菲林斯",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "八重神子",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "申鹤",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "千织",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 128,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NBYTL",
+  "title": "冒险等阶 59，41黄，18个金色英雄，9把金色武器，其他角色武器详情看图.",
+  "price": 3150,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 3,
+    "base": 9.5,
+    "value": 38
+   }
+  ],
+  "score": 38,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NFNFY",
+  "title": "冒险等阶 59，40黄，14个金色英雄，8把金色武器，1657个原石，2个创世结晶，满命流浪者,满命那维莱特，3命七七,1命迪卢克,1命琴,1命莫娜,0命芙宁娜，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2999,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   }
+  ],
+  "score": 76,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NG8K9",
+  "title": "冒险等阶 59，40黄，21个金色英雄，7把金色武器，41个原石，其他角色武器详情看图.",
+  "price": 1350,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N3F9A",
+  "title": "冒险等阶 59，38黄，16个金色英雄，17把金色武器，136个原石，2命七七,1命那维莱特,0命芙宁娜,0命菲林斯,0命钟离",
+  "price": 1400,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "菲林斯",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 45.5,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N35GJ",
+  "title": "冒险等阶 58，38黄，20个金色英雄，11把金色武器，261个原石，4命莫娜,2命刻晴,1命迪卢克,0命芙宁娜,0命玛薇卡",
+  "price": 3166,
+  "chars": [
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   }
+  ],
+  "score": 19,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "ND4T2",
+  "title": "冒险等阶 59，37黄，21个金色英雄，5把金色武器，135个原石",
+  "price": 1200,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "尼可",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "洛恩",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "珊瑚宫心海",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "神里绫华",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "奈芙尔",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 111.5,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N7V9Y",
+  "title": "冒险等阶 57，36黄，17个金色英雄，9把金色武器，1329个原石，1个纠缠之缘，2命芙宁娜,2命那维莱特,2命琴,1命哥伦比娅,1命阿蕾奇诺",
+  "price": 1000,
+  "chars": [
+   {
+    "name": "那维莱特",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 1,
+    "base": 9,
+    "value": 18
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 1,
+    "base": 9,
+    "value": 18
+   }
+  ],
+  "score": 93,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N55GB",
+  "title": "冒险等阶 60，35黄，23个金色英雄，6把金色武器，95个原石，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1800,
+  "chars": [
+   {
+    "name": "神里绫人",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "尼可",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "桑多涅",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "杜林",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "丝柯克",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "爱可菲",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "恰斯卡",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "玛拉妮",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "千织",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "基尼奇",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "纳西妲",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 138.5,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N88N3",
+  "title": "纠缠之缘用过了 冒险等阶 59，35黄，14个金色英雄，7把金色武器，65个原石，96个纠缠之缘，满命桑多涅，2命琴,1命提纳里,1命莫娜,0命哥伦比娅,0命希诺宁",
+  "price": 2600,
+  "chars": [
+   {
+    "name": "桑多涅",
+    "constellation": 6,
+    "base": 9.5,
+    "value": 66.5
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   }
+  ],
+  "score": 84.5,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N6UAF",
+  "title": "冒险等阶 57，35黄，16个金色英雄，10把金色武器，137个原石，2命哥伦比娅,2命玛薇卡,2命茜特菈莉,1命提纳里,1命刻晴",
+  "price": 2067,
+  "chars": [
+   {
+    "name": "玛薇卡",
+    "constellation": 2,
+    "base": 9.5,
+    "value": 28.5
+   },
+   {
+    "name": "茜特菈莉",
+    "constellation": 2,
+    "base": 9,
+    "value": 27
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 2,
+    "base": 9,
+    "value": 27
+   }
+  ],
+  "score": 82.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N58XG",
+  "title": "冒险等阶 58，32黄，16个金色英雄，3把金色武器，82个原石，4命提纳里,2命莫娜,1命芙宁娜,1命钟离,1命阿蕾奇诺，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2187,
+  "chars": [
+   {
+    "name": "芙宁娜",
+    "constellation": 1,
+    "base": 9.5,
+    "value": 19
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 1,
+    "base": 9,
+    "value": 18
+   },
+   {
+    "name": "钟离",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   }
+  ],
+  "score": 53,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NAWGF",
+  "title": "冒险等阶 56，31黄，12个金色英雄，9把金色武器，512个原石，2命雷电将军,2命琴,1命申鹤,1命魈,1命八重神子",
+  "price": 1053,
+  "chars": [
+   {
+    "name": "雷电将军",
+    "constellation": 2,
+    "base": 8.5,
+    "value": 25.5
+   },
+   {
+    "name": "八重神子",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "申鹤",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   }
+  ],
+  "score": 58.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N6NA6",
+  "title": "冒险等阶 58，27黄，18个金色英雄，4把金色武器，372个原石，229个创世结晶，0命哥伦比娅,0命玛薇卡,0命希诺宁,0命奈芙尔,0命枫原万叶，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1000,
+  "chars": [
+   {
+    "name": "玛薇卡",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "希诺宁",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "奈芙尔",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 43.5,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NGT57",
+  "title": "冒险等阶58，27黄，13金角色，5金色武器，207个原石，其他角色武器详情看图.，【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1053,
+  "chars": [
+   {
+    "name": "申鹤",
+    "constellation": 5,
+    "base": 8,
+    "value": 48
+   },
+   {
+    "name": "八重神子",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "阿蕾奇诺",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "爱可菲",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "夜兰",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   },
+   {
+    "name": "钟离",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 99,
+  "dataSource": "missing"
+ },
+ {
+  "goodsNo": "NHS6V",
+  "title": "冒险等阶 56，21黄，13个金色英雄，1把金色武器，180个原石，4命迪卢克,1命钟离,1命莫娜,1命刻晴,0命枫原万叶，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 2000,
+  "chars": [
+   {
+    "name": "钟离",
+    "constellation": 1,
+    "base": 8,
+    "value": 16
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 24,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NC9KB",
+  "title": "【另外附赠，米哈游全家桶，未定超多金卡ssr的80满级号 未定事件簿】  冒险等阶 56，20黄，9个金色英雄，5把金色武器，154个原石，其他角色武器详情看图.",
+  "price": 1200,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N24XF",
+  "title": "冒险等阶 56，18黄，10个金色英雄，4把金色武器，36个原石，2命提纳里,1命恰斯卡,1命七七,0命哥伦比娅,0命菲林斯",
+  "price": 1185,
+  "chars": [
+   {
+    "name": "恰斯卡",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "哥伦比娅",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   },
+   {
+    "name": "菲林斯",
+    "constellation": 0,
+    "base": 9,
+    "value": 9
+   }
+  ],
+  "score": 35,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "N420F",
+  "title": "冒险等阶 57，17黄，10个金色英雄，4把金色武器，1453个原石，2命七七,1命宵宫,0命八重神子,0命妮露,0命可莉，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1000,
+  "chars": [
+   {
+    "name": "八重神子",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "妮露",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 16.5,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "NHTBG",
+  "title": "冒险等阶 56，15黄，12个金色英雄，1把金色武器，18个原石，7个创世结晶，1命提纳里,1命迪卢克,0命芙宁娜,0命枫原万叶,0命雷电将军，其他角色武器详情看图.【道具仅为截图时所拥有内容，具体以实际游戏内为准】",
+  "price": 1420,
+  "chars": [
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "雷电将军",
+    "constellation": 0,
+    "base": 8.5,
+    "value": 8.5
+   },
+   {
+    "name": "枫原万叶",
+    "constellation": 0,
+    "base": 8,
+    "value": 8
+   }
+  ],
+  "score": 26,
+  "dataSource": "title"
+ },
+ {
+  "goodsNo": "NBW2Z",
+  "title": "冒险等阶 55，12黄，8个金色英雄，1把金色武器，39个原石，28个纠缠之缘，1命胡桃,1命提纳里,1命七七,0命芙宁娜,0命那维莱特",
+  "price": 1000,
+  "chars": [
+   {
+    "name": "胡桃",
+    "constellation": 1,
+    "base": 8.5,
+    "value": 17
+   },
+   {
+    "name": "那维莱特",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   },
+   {
+    "name": "芙宁娜",
+    "constellation": 0,
+    "base": 9.5,
+    "value": 9.5
+   }
+  ],
+  "score": 36,
+  "dataSource": "v2"
+ },
+ {
+  "goodsNo": "N9UXE",
+  "title": "冒险等阶 36，2黄，2个金色英雄，0把金色武器，467个原石，1个纠缠之缘，0命迪卢克,0命七七",
+  "price": 1050,
+  "chars": [],
+  "score": 0,
+  "dataSource": "v2"
+ }
+]

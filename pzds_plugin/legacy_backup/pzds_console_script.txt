@@ -1,0 +1,38 @@
+// ===== 盼之详情页数据一键抓取 =====
+// 用法：用 Chrome 打开任意一个 www.pzds.com 的详情页（比如 https://www.pzds.com/goodsDetails/NASPN/6，若被拦截就打开列表页），
+// 按 F12 → Console 控制台 → 粘贴下面全部代码 → 回车。
+// 脚本会自动抓取 21 个商品详情并提取角色命座，最后输出 JSON，你复制粘贴发给我即可。
+(async () => {
+  const nos = ["NASPN","NF4X6","NHYBN","N6T85","NBL4C","N9S4S","N6UXU","N6W9Q","NA6JG","NA0YF","NHNCF","NDVWE","NDU2E","N2HZ8","N8H2A","NFANG","NBCJB","NGG9V","NCWBR","NGT57","NC9KB"];
+  const results = [];
+  const decode = (s) => String(s || '').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\\u002F/g, '/');
+  let wafCount = 0;
+  for (let i = 0; i < nos.length; i++) {
+    const no = nos[i];
+    try {
+      const resp = await fetch('https://www.pzds.com/goodsDetails/' + no + '/6', { credentials: 'include', headers: { 'Accept': 'text/html' } });
+      const html = await resp.text();
+      let roleText = '';
+      const rt = html.indexOf('限定五星角色及命座');
+      if (rt !== -1) {
+        const spanStart = html.lastIndexOf('<span', rt);
+        const spanEnd = html.indexOf('</span>', rt);
+        if (spanStart !== -1 && spanEnd !== -1) roleText = decode(html.slice(spanStart + 6, spanEnd).replace(/<[^>]+>/g, ''));
+      }
+      const waf = html.includes('aliyun_waf');
+      if (waf) wafCount++;
+      results.push({ no, ok: roleText.length > 50, roleText, waf });
+      console.log((i + 1) + '/' + nos.length + ' ' + no + ' => ' + (roleText.length > 50 ? 'OK(' + roleText.length + '字)' : (waf ? 'WAF拦截' : '无角色数据')));
+    } catch (e) {
+      results.push({ no, ok: false, roleText: '', waf: false, err: String(e) });
+      console.log((i + 1) + '/' + nos.length + ' ' + no + ' => 错误: ' + e);
+    }
+    await new Promise(r => setTimeout(r, 400));
+  }
+  if (wafCount > 0) console.log('\n⚠️ 有 ' + wafCount + ' 个被WAF拦截，需要改用“逐页打开”方式（见下方说明）');
+  console.log('\n========== 复制下面全部内容发给助手 ==========');
+  console.log('PZDS_DATA_BEGIN');
+  console.log(JSON.stringify(results));
+  console.log('PZDS_DATA_END');
+  console.log('============================================');
+})();

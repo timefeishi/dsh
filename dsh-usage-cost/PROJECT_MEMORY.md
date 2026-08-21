@@ -46,15 +46,16 @@ C:\Users\16667\Desktop\dsh\dsh-desktop\dsh-usage-cost\
 - 运行时：`C:\Users\16667\AppData\Roaming\DeepSeek Harness\dsh-runtime\node_modules\dsh-usage-cost\`（真实目录）
 - profile 链接：`C:\Users\16667\.dsh\profiles\node_modules\dsh-usage-cost`（junction → 运行时目录）
 - 挂载行：`~/.dsh/profiles/web/cordis.patch.yml`（**必须是 `- insert:` 块**，裸行会被整文件拒绝）
-- apiproxy 白名单：`dsh-host-apiproxy/lib/index.js` 的 `WEB_SETTINGS_NAMESPACES` 已加 `"usage-cost"`（升级会覆盖，需重打）
+- apiproxy 白名单：**rc.7 起已不需要**（上游删除 `WEB_SETTINGS_NAMESPACES`，所有已注册设置命名空间自动对 Web 客户端放行）；rc.6 及更早由 `install.ps1` / `prepare-runtime.ps1` 自动补丁（两个脚本均已兼容：匹配不到就跳过）
 - 用户配置：`~/.dsh/settings.yaml` 有 `usage-cost:` 段（官方现行价 + 默认模型）
 
 **运行方式**：用户端 `D:\Program Files\DeepSeek Harness` **已卸载（2026-08-16，仅验证用）**，此后统一用**开发端** `C:\Users\16667\Desktop\dsh\dsh-desktop\release-upd\win-unpacked\DeepSeek Harness.exe`。两端共用同一运行时 tarball（sha256 一致）+ 同一 `~/.dsh` 数据目录，插件对开发端同样生效，**无需重装**。
 
-> ⚠️ **更新覆盖风险**：app 启动时若安装包内 `dsh-runtime.sha256` 与已解压目录旁的不一致（依赖变化/新版本），会**自动删旧重解压** → `node_modules\dsh-usage-cost` 与 apiproxy 白名单补丁会被**清掉**。症状：插件按钮消失。**恢复 = 重跑 `install.ps1` + 重启**（白名单补丁也由脚本重打）。
+> ⚠️ **更新覆盖风险**：app 启动时若安装包内 `dsh-runtime.sha256` 与已解压目录旁的不一致（依赖变化/新版本），会**自动删旧重解压** → `node_modules\dsh-usage-cost` 会被**清掉**。症状：插件按钮消失。**恢复 = 重跑 `install.ps1` + 重启**。（apiproxy 白名单补丁 rc.7 起已无此项，脚本自动跳过；重解压后 `main.js` 启动时会幂等重建挂载行 + junction。）
 
 > ✅ **随 app 分发已实施（方案 A，2026-08-16）**：插件已烘焙进桌面应用的运行时构建管线
-> （`dsh-desktop\scripts\prepare-runtime.ps1` 复制插件 + 打白名单补丁；`main.js` 启动时幂等写挂载行 + junction）。
+> （`dsh-desktop\scripts\prepare-runtime.ps1` 复制插件 + 打白名单补丁（rc.7+ 自动跳过）；`main.js` 启动时幂等写挂载行 + junction）。
+> **2026-08-18 运行时核心已升 rc.7**（未发布）：rc.7 删除了 apiproxy 白名单机制，usage-cost 命名空间自动放行，无需补丁。发布前需用新版 win-unpacked 实机验证插件。
 > **其他设备装 app 即自动带插件，且每次构建重新烘焙、免疫重解压清空**。装有新版 app 的设备无需手动
 > `install.ps1`；本机开发迭代仍用它。
 
@@ -87,7 +88,7 @@ node test-client-render.mjs # 客户端：真实 react-dom/server 渲染断言�
 - **粘连间隙**：自校正 + 16px 重叠已吸收大部分环境误差；外置窗底部有「吸附偏差 Npx」实时读数，用户若反馈有缝可按差值加补偿
 - **窗口类型未知**：外置窗口可能是系统浏览器标签页（localStorage 与 Harness 隔离）——close()/心跳可能无效，visibilitychange 已验证可用（用户确认"关窗留托盘"场景正常）
 - **插件列表 UI 只读**：启用/停用整个插件只能靠改 cordis.patch.yml 或 settings.yaml 的 enabled
-- 卸载：删挂载行 + 删运行时目录/junction + 撤白名单 + 重启（README 有详细步骤）
+- 卸载：删挂载行 + 删运行时目录/junction + 撤白名单（rc.7+ 无白名单，跳过）+ 重启（README 有详细步骤）
 
 ## 7. 关键环境事实（血泪教训，勿重蹈）
 
