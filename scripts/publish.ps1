@@ -94,7 +94,19 @@ Write-Host "==> Preparing bundled runtime (resources\dsh-runtime)" -ForegroundCo
 if ($LASTEXITCODE -ne 0) { throw "prepare-runtime.ps1 failed with exit code $LASTEXITCODE (see error above)" }
 
 Write-Host "==> Cleaning previous build in $out" -ForegroundColor Cyan
-if (Test-Path $out) { Remove-Item $out -Recurse -Force }
+if (Test-Path $out) {
+  try {
+    Remove-Item $out -Recurse -Force -ErrorAction Stop
+  } catch {
+    Write-Host ""
+    Write-Host "Could not clean $out: some process is holding a folder inside it." -ForegroundColor Yellow
+    Write-Host "This is usually an open terminal/editor whose working directory is inside" -ForegroundColor Yellow
+    Write-Host "release-upd (e.g. release-upd\win-unpacked), or a still-running app from there." -ForegroundColor Yellow
+    Write-Host "Close it, then re-run. If you cannot find it, reboot and re-run." -ForegroundColor Yellow
+    Write-Host ""
+    throw
+  }
+}
 
 Write-Host "==> Building NSIS installer" -ForegroundColor Cyan
 Push-Location $root
