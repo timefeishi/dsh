@@ -54,23 +54,32 @@ Write-Host "==> Trimming runtime" -ForegroundColor Cyan
 & powershell -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot "trim-runtime.ps1")
 if ($LASTEXITCODE -ne 0) { throw "trim-runtime.ps1 failed" }
 
-# 3.5 bake the dsh-usage-cost plugin into the runtime (ships with the app).
-# Copies only the runtime-relevant files (package.json + lib + client.js);
-# the loader resolves the package from the profile's node_modules junction,
-# and main.js ensures that wiring idempotently at launch.
-Write-Host "==> Baking dsh-usage-cost plugin" -ForegroundColor Cyan
-if ([string]::IsNullOrWhiteSpace($PluginSource)) {
-  $PluginSource = Join-Path $root "dsh-usage-cost"      # in-repo plugin source (repo root)
+# 3.5 bake the in-repo plugins into the runtime (ships with the app).
+# Each plugin copies only the runtime-relevant files (package.json + lib +
+# client.js); the loader resolves the package from the profile's node_modules
+# junction, and main.js ensures that wiring idempotently at launch. This list
+# must stay in sync with BUNDLED_PLUGINS in main.js and the profile's
+# cordis.patch.yml inserts.
+$plugins = @("dsh-usage-cost", "dsh-pzds-tool")
+foreach ($plugin in $plugins) {
+  Write-Host "==> Baking $plugin plugin" -ForegroundColor Cyan
+  $pluginSource = if ($plugin -eq "dsh-usage-cost" -and -not [string]::IsNullOrWhiteSpace($PluginSource)) {
+    $PluginSource                                          # explicit -PluginSource override
+  } else {
+    Join-Path $root $plugin                                # in-repo plugin source (repo root)
+  }
+  if (-not (Test-Path $pluginSource)) {
+    throw "plugin source not found: $pluginSource (pass -PluginSource <path> for dsh-usage-cost)"
+  }
+  $pluginDst = Join-Path $dst "node_modules\$plugin"
+  New-Item -ItemType Directory -Force -Path $pluginDst | Out-Null
+  foreach ($item in @("package.json", "client.js", "lib")) {
+    $src = Join-Path $pluginSource $item
+    if (-not (Test-Path $src)) { throw "plugin $plugin missing required file: $src" }
+    Copy-Item $src (Join-Path $pluginDst $item) -Recurse -Force
+  }
+  Write-Host "   baked plugin -> $pluginDst"
 }
-if (-not (Test-Path $PluginSource)) { throw "plugin source not found: $PluginSource (pass -PluginSource <path>)" }
-$pluginDst = Join-Path $dst "node_modules\dsh-usage-cost"
-New-Item -ItemType Directory -Force -Path $pluginDst | Out-Null
-foreach ($item in @("package.json", "client.js", "lib")) {
-  $src = Join-Path $PluginSource $item
-  if (-not (Test-Path $src)) { throw "plugin missing required file: $src" }
-  Copy-Item $src (Join-Path $pluginDst $item) -Recurse -Force
-}
-Write-Host "   baked plugin -> $pluginDst"
 
 # Patch the api-proxy settings whitelist inside the baked runtime so the
 # browser can read/edit the usage-cost namespace (same patch install.ps1

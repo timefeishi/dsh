@@ -125,7 +125,10 @@ try {
     cmd /c $cmdLine
     if ($LASTEXITCODE -ne 0) { throw "electron-builder failed with exit code $LASTEXITCODE" }
   } else {
-    cmd /c "node_modules\.bin\electron-builder.cmd --win nsis -c.directories.output=release-upd"
+    # Build only: package.json configures a github publish provider, so without
+    # this flag electron-builder would try to upload to GitHub Releases and
+    # fail (or worse) when GH_TOKEN is absent/unset.
+    cmd /c "node_modules\.bin\electron-builder.cmd --win nsis -c.directories.output=release-upd --publish never"
     if ($LASTEXITCODE -ne 0) { throw "electron-builder failed with exit code $LASTEXITCODE" }
   }
 } finally {

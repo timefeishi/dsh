@@ -345,36 +345,40 @@ function appendLog(text) {
   } catch {}
 }
 
-// ── dsh-usage-cost plugin self-heal ────────────────────────────────────────
-// The plugin ships INSIDE the bundled runtime (baked by
+// ── bundled plugin mount self-heal ─────────────────────────────────────────
+// Each in-repo plugin ships INSIDE the bundled runtime (baked by
 // scripts/prepare-runtime.ps1). The Cordis loader mounts it through the web
 // profile's patch layer and resolves the package through the profile's
 // node_modules, so on every launch we idempotently ensure those two wiring
 // points exist. This also repairs a device whose runtime was re-extracted
-// over a manual install. Failures are logged, never fatal.
+// over a manual install. Failures are logged, never fatal. This list must stay
+// in sync with $plugins in scripts/prepare-runtime.ps1.
+const BUNDLED_PLUGINS = ["dsh-usage-cost", "dsh-pzds-tool"];
+
 function dshHomeDir() {
   return process.env.DSH_HOME || path.join(os.homedir(), ".dsh");
 }
-function ensureUsageCostMount() {
+function ensurePluginMount(plugin) {
   const profileDir = path.join(dshHomeDir(), "profiles", "web");
   const patchPath = path.join(profileDir, "cordis.patch.yml");
+  const id = plugin.replace(/^dsh-/, "");
   try {
     fs.mkdirSync(profileDir, { recursive: true });
     let content = "";
     try { content = fs.readFileSync(patchPath, "utf8"); } catch { /* missing */ }
-    if (content.includes("dsh-usage-cost")) return;
-    const block = "- insert:\n    - id: usage-cost\n      name: dsh-usage-cost\n";
+    if (content.includes(plugin)) return;
+    const block = `- insert:\n    - id: ${id}\n      name: ${plugin}\n`;
     if (/\[\]\s*$/.test(content)) content = content.replace(/\[\]\s*$/, block);
     else content = content.trimEnd() + (content.trimEnd().length ? "\n" : "") + block;
     fs.writeFileSync(patchPath, content, "utf8");
-    appendLog("usage-cost mount row ensured in " + patchPath);
+    appendLog(`${plugin} mount row ensured in ` + patchPath);
   } catch (err) {
-    appendLog("usage-cost mount row failed: " + err.message);
+    appendLog(`${plugin} mount row failed: ` + err.message);
   }
 }
-function ensureUsageCostLink() {
-  const link = path.join(dshHomeDir(), "profiles", "node_modules", "dsh-usage-cost");
-  const target = path.join(runtimeRoot(), "node_modules", "dsh-usage-cost");
+function ensurePluginLink(plugin) {
+  const link = path.join(dshHomeDir(), "profiles", "node_modules", plugin);
+  const target = path.join(runtimeRoot(), "node_modules", plugin);
   try {
     if (!fs.existsSync(target)) return; // runtime without the plugin — nothing to wire
     fs.mkdirSync(path.dirname(link), { recursive: true });
@@ -384,9 +388,9 @@ function ensureUsageCostLink() {
       fs.rmSync(link, { recursive: true, force: true });
     } catch { /* not exists */ }
     fs.symlinkSync(target, link, "junction");
-    appendLog("usage-cost junction ensured: " + link);
+    appendLog(`${plugin} junction ensured: ` + link);
   } catch (err) {
-    appendLog("usage-cost junction failed: " + err.message);
+    appendLog(`${plugin} junction failed: ` + err.message);
   }
 }
 
@@ -935,10 +939,12 @@ if (!gotLock) {
       return;
     }
 
-    // dsh-usage-cost plugin ships in the bundled runtime — make sure the
-    // profile wires it up (idempotent; also repairs re-extracted runtimes).
-    ensureUsageCostMount();
-    ensureUsageCostLink();
+    // Bundled plugins ship in the bundled runtime — make sure the profile
+    // wires each of them up (idempotent; also repairs re-extracted runtimes).
+    for (const plugin of BUNDLED_PLUGINS) {
+      ensurePluginMount(plugin);
+      ensurePluginLink(plugin);
+    }
 
     // Kick off a background update check after the UI is up (manual check
     // stays available from the tray). Non-blocking; safe to call before the
